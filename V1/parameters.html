@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>kiControl: ICOENERGIA</title>
+  <link rel="icon" href="assets/logos/Logo-simple-azul.png" />
+  <link href="css/boostrap.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <!-- Scripts de Librerias -->
+  <script src="js/lib/bootstrap.bundle.min.js"></script>
+  <script src="js/lib/jquery.min.js"></script>
+  <script src="js/lib/jquery-ui.js"></script>
+  <script src="js/lib/moment.min.js"></script>
+  <script src="js/lib/j_utility.js"></script>
+  <script src="js/lib/fontawesome.js"></script>
+</head>
+
+<body class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-dark">
+    <!-- Logotipo -->
+    <a class="ps-3 d-none d-sm-block" href="index.html">
+      <img src="assets/logos/Logo-blanco.png" alt="intarLAB" style="width: 190px;" />
+    </a>
+    <a class="ps-3 d-block d-sm-none" href="index.html">
+      <img src="assets/logos/Logo-simple-blanco.png" alt="intarLAB" style="width: 50px;" />
+    </a>
+    <!-- Collapse -->
+    <button class="btn btn-link btn-sm m-3" id="sidebarToggle" href="#!">
+      <i style='font-size: 18; color: white;' class="fas fa-bars"></i>
+    </button>
+    <!-- Navbar-->
+    <div class="ms-auto">
+      <div id="login-modal" class="modal">
+        <div class="modal-content">
+          <div class="container text-center">
+            <h2 class="text-center">Log In</h2>
+            <hr />
+            <form id="loginForm">
+              <input class="input-login" type="text" placeholder="Username" id="login-username">
+              <input class="input-login" type="password" placeholder="Password" id="login-password">
+              <span style="display: none;" id="login-error" class="text-danger">
+                * Username or password incorrect</span>
+              <div id="login_form" class="login_form text-center mt-2" style="display: block;">
+                <button type="submit" class="btn btn-primary">LOGIN</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li>
+          <span class='nav-link intar-icon' style="display: none;">ALARMA//i style='color:red;
+            font-size: 25;' class="fa fa-bell"/10
+          </span>
+        </li>
+        <li>
+          <span class='nav-link intar-icon' style="display: none;">WARNING//i style='color:yellow;
+            font-size: 25;' class="fa fa-exclamation-triangle"/10
+          </span>
+        </li>
+        <li>&nbsp;&nbsp;&nbsp;</li>
+        <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link"
+          id="login_username"></li>
+        <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link" id="login_logout"
+          role="button" onclick="logOut()">
+          <i class="fa fa-power-off" aria-hidden="true"></i>
+        </li>
+        <li style="color: white;font-weight: bold; font-size: large;" class="nav-link" role="button"
+          onclick="document.getElementById('login-modal').style.display='block'" id="login_button">LOGIN
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+          <div class="nav">
+            <a style="color: white;" class="nav-link" href="index.html">
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-home"></i></div> PRINCIPAL
+            </a>
+            <a style="color: white;" class="nav-link" href="status.html">
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-tachometer"></i></div>
+              ESTADO
+            </a>
+            <a style="color: white;" class="nav-link" href="alarms.html">
+              <div class="sb-nav-link-icon">
+                <i id="alarm" style='font-size: 20;' class="fa fa-bell"></i>
+                <span class='intar-icon' style="display: none;">ALARMA///10 </span>
+              </div> ALARMAS
+            </a>
+            <a style="color: white;" class="nav-link" href="input-output.html">
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-toggle-off"></i></div>
+              ENTRADAS/SALIDAS
+            </a>
+            <a style="color: white;" class="nav-link" href="graphs.html">
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-area-chart"></i></div>
+              GRAFICAS
+            </a>
+            <a style="color: white;" class="nav-link" data-bs-toggle="collapse" data-bs-target="#collapseParameters"
+              aria-expanded="false" aria-controls="collapseParameters">
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-sliders"></i></div>
+              PARAMETROS
+              <div class="sb-sidenav-collapse-arrow">
+                <i style="color: white;" class="fas fa-angle-down"></i>
+              </div>
+            </a>
+            <div class="collapse" id="collapseParameters" aria-labelledby="headingOne"
+              data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a style="color: white;" class="nav-link" href="parameters.html">
+                  <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i>
+                  </div> CONFIGURACION PARAMETROS
+                </a>
+                <a style="color: white;" class="nav-link" href="parameters-io.html">
+                  <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i>
+                  </div> CONFIGURACION E/S
+                </a>
+              </nav>
+            </div>
+            <a style="color: white;" class="nav-link" href="commands.html">
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-terminal"></i></div>
+              COMANDOS
+            </a>
+            <hr>
+            <a style="color: white;" class="nav-link" href="/panel/index.html">
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-columns"></i></div>
+              PANEL DE CONTROL
+            </a>
+          </div>
+        </div>
+        <div class="sb-sidenav-footer">
+          <div class="text-center">
+            <a href="https://www.kiconex.com" target="_blank"
+              style="text-decoration: none;color:white; font-weight: bold;">KICONEX - 2025</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div id="layoutSidenav_content">
+      <main>
+        <div class="container-fluid p-3">
+          <form id="formulario">
+            <div class="d-flex justify-content-center row">
+              <h3 id="not-perms" class="text-center" style="display: none;">
+                <strong>You do not have permissions to modify parameters</strong>
+              </h3>
+              <h3 id="warning" class="text-center" style="display: none;"><strong>Please do not close or
+                  reload this window</strong></h3>
+              <div id="main-load" class="spinner-border" role="status"
+                style="width: 6rem; height: 6rem;color: #1a82ba;">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+
+            <!--Tecla para aplicar los cambios realizados en los parametros-->
+            <div id="submit-div" align="center" style="display: none;">
+              <span class="isaform_submit">
+                <button class="btn alarm-button" onclick="submitChanges()">
+                  SUBMIT CHANGES
+                </button>
+              </span>
+            </div>
+
+            <!--Tabla con parametros de configuracion-->
+            <div id="parameters-conf" class="intar-accordion" style="display: none;">
+              <h5>CONFIGURATION</h5>
+              <div class="content table-responsive">
+                <table class="table" align="center" width="100%">
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                      <th>Value</th>
+                      <th>Extra info</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>CNF01</td>
+                    <td>Number of circuits</td>
+                    <td><span class="isaform_dint">NumeroCircuitos</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        Number of circuits:1-5
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF02</td>
+                    <td>Number of compressors per circuit</td>
+                    <td><span class="isaform_dint">NumeroCompresores</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        Number of compressors: (Cir1:1-6,Cir2-5:1-4)
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF03</td>
+                    <td>Kind of circuit equalization</td>
+                    <td><span class="isaform_dint">Equilibrado_circuitos</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=saturation, 1=equalization
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF04</td>
+                    <td>Gas type</td>
+                    <td><select id='sel-CNF04' onchange='selected(this,"CNF04")'></select></td>
+                    <td id='copy-CNF04'></td>
+                    <td><span id='CNF04' class="isaform_dint"
+                        style='visibility:hidden; z-index:-4; position:absolute'>TypeGas</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF05</td>
+                    <td>Glycol set-point</td>
+                    <td><span class="isaform_decimal">SET_GLICOL 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        Set-point for inlet glycol temperature
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF06</td>
+                    <td>Glycol bandwidth regulation</td>
+                    <td><span class="isaform_decimal">BAND_GLICOL 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        Bandwidth for glycol temperature control
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF07</td>
+                    <td>Enable expansion modules</td>
+                    <td><span class="isaform_dint">MODULO_EXPANSION</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=disabled, 1=DIN4, 2=DIN10, 3=DIN4+DIN10, 4=DIN10+DIN10', 5=DIN4+DIN10+DIN10'
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF08</td>
+                    <td>Range for low pressure transducer (MIN)</td>
+                    <td><span class="isaform_decimal">TRANDS_BAJA_MIN 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Pressure value for 4mA
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF09</td>
+                    <td>Range for low pressure transducer (MAX)</td>
+                    <td><span class="isaform_decimal">TRANDS_BAJA_MAX 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Pressure value for 20mA
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF10</td>
+                    <td>Range for high pressure transducer (MIN)</td>
+                    <td><span class="isaform_decimal">TRANDS_ALTA_MIN 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Pressure value for 4mA
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF11</td>
+                    <td>Range for high pressure transducer (MAX)</td>
+                    <td><span class="isaform_decimal">TRANDS_ALTA_MAX 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Pressure value for 20mA
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF12</td>
+                    <td>Range for water pressure transducer (MIN)</td>
+                    <td><span class="isaform_decimal">TRANDS_AGUA_MIN 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Pressure value for 4mA
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF13</td>
+                    <td>Range for water pressure transducer (MAX)</td>
+                    <td><span class="isaform_decimal">TRANDS_AGUA_MAX 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Pressure value for 20mA
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF14</td>
+                    <td>Reference probe for temperature control</td>
+                    <td><span class="isaform_dint">PAR_SONDA_CONTROL</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=inlet probe, 1=delivery probe
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF15</td>
+                    <td>Leak transducer: PPM min scale value</td>
+                    <td><span class="isaform_dint">PAR_TRANSD_PPM_MIN</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">PPM
+                      <span class="tooltiptext">
+                        Min scale value (in PPM) for leak transducer
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF16</td>
+                    <td>Leak transducer: PPM max scale value</td>
+                    <td><span class="isaform_dint">PAR_TRANSD_PPM_MAX</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">PPM
+                      <span class="tooltiptext">
+                        Max scale value (in PPM) for leak transducer
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF17</td>
+                    <td>Upper range differential pressure sensor</td>
+                    <td><span class="isaform_dint">PAR_TRANSD_P_DIF_RANG</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">Pa
+                      <span class="tooltiptext">
+                        Dif.pressure sensor value for 20mA/10V
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CNF18</td>
+                    <td>Working mode</td>
+                    <td><span class="isaform_dint">PAR_WORKING_MODE</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=chiller, 1=heat pump
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <h5>COMPRESSOR</h5>
+              <div class="content table-responsive">
+                <table class="table" align="center" width="100%">
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                      <th>Value</th>
+                      <th>Extra info</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>CPR01</td>
+                    <td>Time between two different compressors start</td>
+                    <td><span class="isaform_dint">Tiempo_ONON</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Time between two different load switch-on
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR02</td>
+                    <td>Antishort cycle time. Two start-up same compressor</td>
+                    <td><span class="isaform_dint">Anticortociclo</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">min
+                      <span class="tooltiptext">
+                        Time between two start-ups of the same compressor
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR03</td>
+                    <td>Equalization pressure time</td>
+                    <td><span class="isaform_dint">Tiempo_equilibrado_presion</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Time to activate the equalization valve before to switch-on the
+                        compressor
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR04</td>
+                    <td>Number of compressor's steps</td>
+                    <td><span class="isaform_dint">NumeroEtapas</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=on-off, 1=50-100%, 2=33-66-100%
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR05</td>
+                    <td>Type of compressor for capacity control</td>
+                    <td><span class="isaform_dint">Tipo_regulacion_capacidad</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=screw, 1=semihermetic
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR06</td>
+                    <td>Delay between pumps and compressor activation</td>
+                    <td><span class="isaform_dint">Retardo_compresores_bomba</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        The compressors are not able to run until the pumps are running at least
+                        this time
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR07</td>
+                    <td>Configuration for inverter compressors</td>
+                    <td><span class="isaform_dint">PAR_CONFIG_CPR_INVERTER</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=not present, 1=one-inverter 2=full-inverter
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR08</td>
+                    <td>Compressor rotation based on</td>
+                    <td><span class="isaform_dint">PAR_ROTA_CPRS</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=based on running hours, 1=based on start-ups
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR09</td>
+                    <td>Time to stop pump after compressor</td>
+                    <td><span class="isaform_dint">PAR_DELAY_OFF_PUMP_CPR</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Elapsed time between compressor stop and pump
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR10</td>
+                    <td>Minimum stop time for compressor </td>
+                    <td><span class="isaform_dint">PAR_TIME_CPR_OFF</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Minimum time the compressor must be stoped
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR11</td>
+                    <td>Compressor maximum optimal speed </td>
+                    <td><span class="isaform_dint">PAR_VOH_CPR_INVERTER</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">%
+                      <span class="tooltiptext">
+                        Inverter compressor always tries to act below this value
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CPR12</td>
+                    <td>Compressor minimum optimal speed</td>
+                    <td><span class="isaform_dint">PAR_VOL_CPR_INVERTER</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">%
+                      <span class="tooltiptext">
+                        Inverter compressor always tries to act over this value
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <h5>FANS</h5>
+              <div class="content table-responsive">
+                <table class="table" align="center" width="100%">
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                      <th>Value</th>
+                      <th>Extra info</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>FAN01</td>
+                    <td>Condensing set point</td>
+                    <td><span class="isaform_decimal">SET_CONDEN_CIR1 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        Condensing set point or minimum condensing set point for dynamic
+                        condensing
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN02</td>
+                    <td>Bandwidth for ondensing control</td>
+                    <td><span class="isaform_decimal">BAND_CONDEN_CIR1 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        Bandwidth for condensing control
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN03</td>
+                    <td>Number of fans per circuit</td>
+                    <td><span class="isaform_dint">Num_Vent_cir1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        Value from 1 to 4.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN04</td>
+                    <td>Enable commun condensing</td>
+                    <td><span class="isaform_dint">Condensacion_comun</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=NO 1=YES. If YES all the circuits have the same condensing pressure.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN05</td>
+                    <td>Maximum speed for the condensing fans</td>
+                    <td><span class="isaform_dint">Ventiladores_MAX_velo</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">%
+                      <span class="tooltiptext">
+                        Value from 0 to 100%
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN06</td>
+                    <td>Minimum speed for the condensing fans</td>
+                    <td><span class="isaform_dint">Ventiladores_MIN_velo</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">%
+                      <span class="tooltiptext">
+                        Value from 0 to 100%
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN07</td>
+                    <td>Condensing fans linked to compressors</td>
+                    <td><span class="isaform_dint">VENT_LINK2_COMPRES</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=NO 1=YES. If YES fans are ON only if the compressors are ON
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN08</td>
+                    <td>Enable dynamic condensig set point</td>
+                    <td><span class="isaform_dint">CONDE_FLOT_ENABLE</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=NO 1=YES. Condensing set point is related to outdoor temperature.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN09</td>
+                    <td>Maximum condensing set point for dynamic condensing</td>
+                    <td><span class="isaform_decimal">CONDE_FLOT_MAXSET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        The maximum condensing set point allowed during the activation of
+                        dynamic condensing set point
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN10</td>
+                    <td>Delt T. in the coil (termal differential)</td>
+                    <td><span class="isaform_decimal">CONDE_FLOT_DT 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        Temperature differential between condensing pressure and outdoor
+                        temperature
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN11</td>
+                    <td>Enable rotation fans</td>
+                    <td><span class="isaform_dint">ROTA_FANS</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=NO 1=YES. The fans are switch on alternatively
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN12</td>
+                    <td>Fans forced ON if leakage</td>
+                    <td><span class="isaform_dint">PAR_FAN_ON_LEAKAGE</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=NO 1=YES. The electronic fans are forced on in case of leakage
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN13</td>
+                    <td>Maximum fan speed when silent mode is active</td>
+                    <td><span class="isaform_dint">PAR_MAXVELO_SILENT_MODE</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">%
+                      <span class="tooltiptext">
+                        0-100% limit for maximum fan speed
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>FAN14</td>
+                    <td>I factor for PID control fans</td>
+                    <td><span class="isaform_dint">PAR_FAN_CONDE_INT</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        I factor for PID control
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <h5>ALARMS</h5>
+              <div class="content table-responsive">
+                <table class="table" align="center" width="100%">
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                      <th>Value</th>
+                      <th>Extra info</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>ALR01</td>
+                    <td>Delay at activation of digital input for compressors</td>
+                    <td><span class="isaform_dint">Alarm_CPR_delay_ON</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Time to ignore the activation of the digital input
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR02</td>
+                    <td>Delay at deactivation of digital input for compressors</td>
+                    <td><span class="isaform_dint">Alarm_CPR_delay_OFF</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Time digital input is deactivated before to remove the alarm
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR03</td>
+                    <td>Number of compressor alarms per hour</td>
+                    <td><span class="isaform_dint">ALARM_CPR_MAX</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        1=always manual, 2..15, 16= always auto. Select the behavior of alarm
+                        before to locked
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR04</td>
+                    <td>Number of pressure switch alarms per hour</td>
+                    <td><span class="isaform_dint">ALARM_PRESOS_MAX</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        1=always manual, 2..15, 16= always auto. Select the behavior of alarm
+                        before to locked
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR05</td>
+                    <td>Set for antifreezing glycol outlet temperature</td>
+                    <td><span class="isaform_decimal">ALARM_ANTIFREE_GLICOL_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        Alarm for antifreeze glycol
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR06</td>
+                    <td>Band for recovering from antifreezing glycol outlet temperature</td>
+                    <td><span class="isaform_decimal">ALARM_ANTIFREE_GLICOL_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        Alarm for antifreeze glycol
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR07</td>
+                    <td>Set for antifreezing freon temperature</td>
+                    <td><span class="isaform_decimal">ALARM_ANTIFREE_FREON_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        Alarm for antifreeze freon
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR08</td>
+                    <td>Band for recovering from antifreezing freon temperature</td>
+                    <td><span class="isaform_decimal">ALARM_ANTIFREE_FREON_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        Alarm for antifreeze freon
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR09</td>
+                    <td>Set for antifreezing pressure</td>
+                    <td><span class="isaform_decimal">ALARM_ANTIFREE_PRESION_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Alarm for antifreeze pressure
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR10</td>
+                    <td>Band for recovering from antifreezing pressure</td>
+                    <td><span class="isaform_decimal">ALARM_ANTIFREE_PRESION_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Alarm for antifreeze pressure
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR11</td>
+                    <td>Delay to signal alarm for antifreezing pressure</td>
+                    <td><span class="isaform_dint">ALARM_ANTIFREE_PRESION_DELAY</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Alarm for antifreeze pressure
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR12</td>
+                    <td>Value for low pump suction pressure alarm</td>
+                    <td><span class="isaform_decimal">ALARM_LP_PUMP_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        If the pump suction pressure is lower than this value the control
+                        signals an alarm
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR13</td>
+                    <td>Number of low pump suction pressure alarms per hour</td>
+                    <td><span class="isaform_dint">ALARM_LP_PUMP_NUMBER</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        1=always manual, 2..15, 16= always auto. Select the behavior of alarm
+                        before to locked
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR14</td>
+                    <td>Number of external alarm per hour before to lock</td>
+                    <td><span class="isaform_dint">ALARM_GENALARM_NUM</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        1=always manual, 2..15, 16= always auto. Select the behavior of alarm
+                        before to locked
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR15</td>
+                    <td>Value for glycol high temperature alarm</td>
+                    <td><span class="isaform_decimal">ALARM_ALTATEMP 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        Value for the inlet temperature to signal high temperature alarm
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR16</td>
+                    <td>Delay to signaling the glycol high temperature alarm</td>
+                    <td><span class="isaform_dint">RETARDO_ALARM_ALTATEMP</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">min
+                      <span class="tooltiptext">
+                        Time during the inlet temperature has been higher than ALR15 to signal
+                        alarm
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR17</td>
+                    <td>Leakage level to warning and activate ventilation</td>
+                    <td><span class="isaform_decimal">SET_WARNING_FUGA 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">ppm
+                      <span class="tooltiptext">
+                        If detector reachs this value the control indicates a warning and
+                        activate the fans
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR18</td>
+                    <td>Leakage level to stop the unit</td>
+                    <td><span class="isaform_decimal">SET_ALARMA_FUGA 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">ppm
+                      <span class="tooltiptext">
+                        If detector reachs this value the control stops the unit
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR19</td>
+                    <td>Leakage alarm activation delay</td>
+                    <td><span class="isaform_dint">PAR_ALARM_FUGA_DELAY_ON</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Delay between leak detector safety digital input being activated 
+                        and the control acting on it
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR20</td>
+                    <td>Leakage alarm deactivation delay</td>
+                    <td><span class="isaform_dint">PAR_ALARM_FUGA_DELAY_OFF</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Delay between leak detector safety digital input being disconnected 
+                        and the control consideres it disappeared
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR21</td>
+                    <td>Leakage activation number before control lock</td>
+                    <td><span class="isaform_dint">PAR_ALARM_FUGA_NUM</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        1=always manual, 2..15, 16= always auto. Select the behavior of alarm
+                        before to locked
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR22</td>
+                    <td>Neglect the low-pressure switch at start-up compressor</td>
+                    <td><span class="isaform_dint">PAR_TIME_STARTUP_NOALARM</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        The LP switch is neglected at startup of the first compressor on each
+                        circuit
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR23</td>
+                    <td>Set-Point for electronic low-pressure switch</td>
+                    <td><span class="isaform_decimal">PAR_ELEC_LPS_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Control stops compressors from circuit which pressure drops
+                        below this value
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR24</td>
+                    <td>Band to recovering for electronic low-pressure switch</td>
+                    <td><span class="isaform_decimal">PAR_ELEC_LPS_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Recovery hysteresis for low pressure drop of electronic 
+                        low-pressure switch
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR25</td>
+                    <td>Delay activation for electronic low-pressure switch</td>
+                    <td><span class="isaform_dint">PAR_ELEC_LPS_DELAY</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Activation timing for low  pressure alarm due to electronic 
+                        pressure switch
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR26</td>
+                    <td>Set point for super-heat</td>
+                    <td><span class="isaform_decimal">PAR_SET_LOW_SH 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&deg
+                      <span class="tooltiptext">
+                        Control activates super-heat warning if super-heats is lower
+                        than this value after ALR19 time
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR27</td>
+                    <td>Delay activation for super-heat alarm</td>
+                    <td><span class="isaform_dint">PAR_DELAY_ALARM_LOW_SH</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">min
+                      <span class="tooltiptext">
+                        Control activates super-heat alarm and stops compressors form
+                        circuit in which super-heat warning lasts more than this value
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR28</td>
+                    <td>Min level of differential pressure sensor</td>
+                    <td><span class="isaform_dint">PAR_MIN_TRANS_P_DIF</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">Pa
+                      <span class="tooltiptext">
+                        Min allowable value of differential air pressure alarm
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR29</td>
+                    <td>Max level of differential pressure sensor</td>
+                    <td><span class="isaform_dint">PAR_MAX_TRANS_P_DIF</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">Pa
+                      <span class="tooltiptext">
+                        Max allowable value of differential air pressure alarm
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR30</td>
+                    <td>Delay activation for diff.pressure sensor alarm</td>
+                    <td><span class="isaform_dint">PAR_P_DIF_DELAY_ON</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Delay between leak detector safety digital input being activated 
+                        and the control acting on it
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR31</td>
+                    <td>Delay deactivation for diff.pressure sensor alarm</td>
+                    <td><span class="isaform_dint">PAR_P_DIF_DELAY_OFF</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Delay between diff.pressure safety digital input being disconnected 
+                        and the control consideres it disappeared
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ALR32</td>
+                    <td>Diff.pressure activation number before control lock</td>
+                    <td><span class="isaform_dint">PAR_ALARM_P_DIF_NUM</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        1=always manual, 2..15, 16= always auto. Select the behavior of alarm
+                        before to locked
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <h5>PUMPS</h5>
+              <div class="content table-responsive">
+                <table class="table" align="center" width="100%">
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                      <th>Value</th>
+                      <th>Extra info</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>PUM01</td>
+                    <td>Delay alarm after pump start-up</td>
+                    <td><span class="isaform_dint">Bomba_Retardo_alarma_arranque</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        The flow switch is ignored during this time in the start-up of the pump
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM02</td>
+                    <td>Delay alarm during normal running</td>
+                    <td><span class="isaform_dint">Bomba_Retardo_alarma_funcionando</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        The flow switch is ignored during this time in the normal running of the
+                        pump
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM03</td>
+                    <td>Delay to perform another attemp in case of fail</td>
+                    <td><span class="isaform_dint">Bomba_Retardo_reintento</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        If the pump stops due to fail, the control wait this time before next
+                        attempt
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM04</td>
+                    <td>Number of attempts before lock the pumps</td>
+                    <td><span class="isaform_dint">Bomba_Reintentos_antes_alarma</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        The control is going to try to run each pump this number of times before
+                        to locked
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM05</td>
+                    <td>Hour running to force a pump rotation</td>
+                    <td><span class="isaform_dint">Bomba_horas_hasta_rotacion</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">h
+                      <span class="tooltiptext">
+                        One pump is running this time continuosly before to force a rotation
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM06</td>
+                    <td>Kind of pump rotation based on:</td>
+                    <td><span class="isaform_dint">Bomba_rotacion_normal</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=based on alarms, 1=based on stops
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM07</td>
+                    <td>Enable primary variable flow:</td>
+                    <td><span class="isaform_dint">CAUDAL_VAR_EN</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=NO, 1=YES
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM08</td>
+                    <td>Differential Pressure Set Point:</td>
+                    <td><span class="isaform_decimal">CAUDAL_VAR_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Set point for differential pressure control
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM09</td>
+                    <td>Differential Pressure to switch-on pumps:</td>
+                    <td><span class="isaform_decimal">CAUDAL_VAR_ON_PRESS 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        if differential pressure drops below this value the pumps start
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM10</td>
+                    <td>Differential Pressure to switch-off pumps:</td>
+                    <td><span class="isaform_decimal">CAUDAL_VAR_OFF_PRESS 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        if differential pressure rises this value the pumps stop
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM11</td>
+                    <td>P factor for PID control Differential Pressure:</td>
+                    <td><span class="isaform_decimal">CAUDAL_VAR_P 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        P factor for PID control
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM12</td>
+                    <td>I factor for PID control Differential Pressure:</td>
+                    <td><span class="isaform_dint">CAUDAL_VAR_I</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        I factor for PID control
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM13</td>
+                    <td>D factor for PID control Differential Pressure:</td>
+                    <td><span class="isaform_dint">CAUDAL_VAR_D</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        D factor for PID control
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM14</td>
+                    <td>Sampling time to compute I component of PID:</td>
+                    <td><span class="isaform_dint">CAUDAL_VAR_SAMPLES</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Sampling time for D factor calcultation
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM15</td>
+                    <td>K factor (Bandwitdh at minimum pump speed):</td>
+                    <td><span class="isaform_decimal">CAUDAL_VAR_FACTOR 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        1=disabled, value from 1 to 10.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM16</td>
+                    <td>Time pump running to reset attemp counters:</td>
+                    <td><span class="isaform_dint">TIME_RESET_REINT</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">min
+                      <span class="tooltiptext">
+                        If the pump is running for this time propertly, the attemp counter is
+                        reset.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM17</td>
+                    <td>R factor (modification of set related to speed):</td>
+                    <td><span class="isaform_decimal">PAR_FACTOR_K_PRES 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=disabled, value from 0 to 1.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM18</td>
+                    <td>Number of samples to create average:</td>
+                    <td><span class="isaform_dint">PAR_NUMBER_SAMPLING</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        Number of samples to computes dif.pressure average.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM19</td>
+                    <td>Time between samples to create average:</td>
+                    <td><span class="isaform_dint">PAR_TIME_SAMPLING_PRES</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Time between samples to create dif.pressure average
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM20</td>
+                    <td>Time for water-pumps stopped:</td>
+                    <td><span class="isaform_dint">PAR_PUMP_OFF</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">min
+                      <span class="tooltiptext">
+                        If setpoint is achieve the pump are stopped during this time before to
+                        perform a checking proccess
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PUM21</td>
+                    <td>Time to perform a check proccess:</td>
+                    <td><span class="isaform_dint">PAR_PUMP_ON</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">min
+                      <span class="tooltiptext">
+                        The pumps are forced to run during this time to check if there is a
+                        cooling demand.
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <h5>SPECIAL</h5>
+              <div class="content table-responsive">
+                <table class="table" align="center" width="100%">
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                      <th>Value</th>
+                      <th>Extra info</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>SPE01</td>
+                    <td>Set-Point to activate antifreeze electrical heaters</td>
+                    <td><span class="isaform_decimal">ANTIFREEZE_HEATER_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        Set-point measured by delivery probe to activate the electrical heaters
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE02</td>
+                    <td>Bandwidth for antifreeze electrical heaters</td>
+                    <td><span class="isaform_decimal">ANTIFREEZE_HEATER_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        Bandwidth to control the antifreeze electrical heaters
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE03</td>
+                    <td>Recovery control mode:</td>
+                    <td><span class="isaform_dint">PAR_RECOVERY_MODE</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=use a fixed condensing set-point, 1=recovering as a function of common
+                        outlet probe, 2=recovering as a
+                        function of individual outlet probes
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE04</td>
+                    <td>Recovery Condensing Set-Point:</td>
+                    <td><span class="isaform_decimal">OFFSET_HEATRECOVERY 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        The condensing set point changes to this value when recovery is on
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE05</td>
+                    <td>Set-point for recovery outlet water temperature:</td>
+                    <td><span class="isaform_decimal">PAR_RECOVERY_WATER_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        The condensing pressure is modified to try to obtain a fixed outlet
+                        water temperature
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE06</td>
+                    <td>Factor P (PID) for outlet recovery water control:</td>
+                    <td><span class="isaform_decimal">PAR_RECOVERY_PID_P 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        factor P for PID
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE07</td>
+                    <td>Factor I (PID) for outlet recovery water control:</td>
+                    <td><span class="isaform_decimal">PAR_RECOVERY_PID_I 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        factor I for PID
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE08</td>
+                    <td>Off-set for glycol set-point during energy saving:</td>
+                    <td><span class="isaform_decimal">OFFSET_ENERGYSAVING 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        The current glycol set-point is modified by this value when energy
+                        saving is active
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE09</td>
+                    <td>Number of fans for free-cooling:</td>
+                    <td><span class="isaform_dint">PAR_NUM_FAN_FREECOOLING</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        Number of fans for free-cooling
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE10</td>
+                    <td>Delta T for free-cooling:</td>
+                    <td><span class="isaform_decimal">PAR_DELTAT_FREECOOLING 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        if differential pressure rises this value the pumps stop
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE11</td>
+                    <td>P factor for PID control free-cooling:</td>
+                    <td><span class="isaform_decimal">PAR_PID_P_FREECOOL 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        P factor for PID control
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE12</td>
+                    <td>I factor for PID control Dfree-cooling:</td>
+                    <td><span class="isaform_dint">PAR_PID_I_FREECOOL</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        I factor for PID control
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE13</td>
+                    <td>Remote set-point. Control mode:</td>
+                    <td><span class="isaform_dint">PAR_ENABLE_REMOTE_SETPOINT</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=set-point controller by parameter, 1=external 4-20mA signal,
+                        2=external 0-10V signal, 3=by BMS bus
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE14</td>
+                    <td>Maximum offset for remote set-point:</td>
+                    <td><span class="isaform_decimal">PAR_OFFSET_REMOTE_SETPOINT 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        Maximum value to modify the set-point when remote set-point is active
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE15</td>
+                    <td>Low pressure prevention set-point:</td>
+                    <td><span class="isaform_decimal">PAR_PREVENT_EVAP_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&bar
+                      <span class="tooltiptext">
+                        Set-point to start the unloading proccess for low pressure
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE16</td>
+                    <td>Low pressure prevention bandwidth:</td>
+                    <td><span class="isaform_decimal">PAR_PREVENT_EVAP_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&bar
+                      <span class="tooltiptext">
+                        Bandwidth for the unloading proccess for low pressure
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE17</td>
+                    <td>High pressure prevention set-point:</td>
+                    <td><span class="isaform_decimal">PAR_PREVENT_CONDE_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&bar
+                      <span class="tooltiptext">
+                        Set-point to start the unloading proccess for high pressure
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE18</td>
+                    <td>High pressure prevention bandwidth:</td>
+                    <td><span class="isaform_decimal">PAR_PREVENT_CONDE_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&bar
+                      <span class="tooltiptext">
+                        Bandwidth for the unloading proccess for high pressure
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE19</td>
+                    <td>Condensation set-point time ramp between recovery and normal mode</td>
+                    <td><span class="isaform_dint">PAR_RECOVERY_DECREASE_RAMP</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        Condensation set-point time ramp between recovery and normal mode
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE20</td>
+                    <td>Energy meter address</td>
+                    <td><span class="isaform_dint">PAR_ENERGYMETER_ADR</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        Energy meter address
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE21</td>
+                    <td>Max allowed current</td>
+                    <td><span class="isaform_dint">PAR_PREVENT_CURRENT_SET</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">A
+                      <span class="tooltiptext">
+                        Reached this current, no more compressors will be activated
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE22</td>
+                    <td>Band for max allowed current</td>
+                    <td><span class="isaform_dint">PAR_PREVENT_CURRENT_BAND</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">A
+                      <span class="tooltiptext">
+                        Band for max allowed current
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE23</td>
+                    <td>Value for maximum point offset current prevent</td>
+                    <td><span class="isaform_dint">PAR_OFFSET_REMOTE_SETPOINT</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">A
+                      <span class="tooltiptext">
+                        Correction to the current prevention setpoint through analog input
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE24</td>
+                    <td>Mode to control current prevention</td>
+                    <td><span class="isaform_dint">PAR_ENABLE_REMOTE_SETPOINT</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=normal, 1=with 4-20mA, 2=with 0-10V
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE25</td>
+                    <td>Set point for pressure balancer</td>
+                    <td><span class="isaform_decimal">PAR_BALANCER_PRESS_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Set point for pressure balancer output
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE26</td>
+                    <td>Air diff.pressure sensor signal mode</td>
+                    <td><span class="isaform_dint">PAR_MODO_P_DIF</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=not used, 1=with 4-20mA, 2=with 0-10V
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SPE27</td>
+                    <td>Air diff.pressure sensor action on alarm</td>
+                    <td><span class="isaform_dint">PAR_P_DIF_STOP_ALARM</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">--
+                      <span class="tooltiptext">
+                        0=continue, 1=stop
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <h5>EEV DRIVER</h5>
+              <div class="content table-responsive">
+                <table class="table" align="center" width="100%">
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                      <th>Value</th>
+                      <th>Extra info</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>EEV01</td>
+                    <td>Modbus address for EEV driver Circuit 1</td>
+                    <td><span class="isaform_dint">PAR_ADR_EEV[1]</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Modbus address for EEV driver Circuit 1
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV02</td>
+                    <td>Modbus address for EEV driver Circuit 2</td>
+                    <td><span class="isaform_dint">PAR_ADR_EEV[2]</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Modbus address for EEV driver Circuit 2
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV03</td>
+                    <td>Modbus address for EEV driver Circuit 3</td>
+                    <td><span class="isaform_dint">PAR_ADR_EEV[3]</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Modbus address for EEV driver Circuit 3
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV04</td>
+                    <td>Modbus address for EEV driver Circuit 4</td>
+                    <td><span class="isaform_dint">PAR_ADR_EEV[4]</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Modbus address for EEV driver Circuit 4
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV05</td>
+                    <td>Modbus address for EEV driver Circuit 5</td>
+                    <td><span class="isaform_dint">PAR_ADR_EEV[5]</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Modbus address for EEV driver Circuit 5
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV06</td>
+                    <td>Set point for superheating</td>
+                    <td><span class="isaform_decimal">PAR_EEV_SH 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        Set point for superheating control for electronic expansion valve driver
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV07</td>
+                    <td>Proportional factor for PID EEV</td>
+                    <td><span class="isaform_decimal">PAR_EEV_PB 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degC
+                      <span class="tooltiptext">
+                        This is the Bandwidth for PID controller
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV08</td>
+                    <td>Integral factor for PID EEV</td>
+                    <td><span class="isaform_dint">PAR_EEV_I</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        This is the integration factor for PID controller
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV09</td>
+                    <td>Derivative factor for PID EEV</td>
+                    <td><span class="isaform_dint">PAR_EEV_D</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        This is the derivative factor for PID controller
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV10</td>
+                    <td>Sampling time to compute derivative component for PID EEV</td>
+                    <td><span class="isaform_dint">PAR_EEV_SAMPLE</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        This is the sampling time to compute the derivative component for PID
+                        controller
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV11</td>
+                    <td>Minimum opening for electronic expansion valve</td>
+                    <td><span class="isaform_dint">PAR_EEV_MIN</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">%
+                      <span class="tooltiptext">
+                        Minimum opening for electronic expansion valve
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV12</td>
+                    <td>Maximum opening for electronic expansion valve</td>
+                    <td><span class="isaform_dint">PAR_EEV_MAX</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">%
+                      <span class="tooltiptext">
+                        Maximum opening for electronic expansion valve
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV13</td>
+                    <td>Maximum operating pressure (MOP)</td>
+                    <td><span class="isaform_decimal">PAR_MOP_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        The expansion valve start closing if the evaporating pressure reachs
+                        this value
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV14</td>
+                    <td>Band for maximum operating presssure</td>
+                    <td><span class="isaform_decimal">PAR_MOP_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">bar
+                      <span class="tooltiptext">
+                        Bandwidth to control the maximum operating pressure functionality
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV15</td>
+                    <td>Brand of the EEV</td>
+                    <td><span class="isaform_dint">PAR_BRAND_EEV</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        0=not present, 1=Dixell XEV22D, 2=Carel EVD, 3=Eliwell XVD420, 4=Dixell XEV20D
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV16</td>
+                    <td>Set point for LOP function</td>
+                    <td><span class="isaform_decimal">PAR_LOP_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        If evaporating pressure is below this value the valve open to try to
+                        increase pressure.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV17</td>
+                    <td>Time for LOP function at start-up</td>
+                    <td><span class="isaform_dint">PAR_LOP_TIME</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">s
+                      <span class="tooltiptext">
+                        The LOP functionality is ON only this second at start-up of first
+                        compressor
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV18</td>
+                    <td>LOP minimum opening during start-up phase</td>
+                    <td><span class="isaform_dint">PAR_MIN_OPEN_START</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">%
+                      <span class="tooltiptext">
+                        The electronic valve is open at least at this value during the start-up
+                        phase
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV19</td>
+                    <td>Offset for superheating at 0% power activation</td>
+                    <td><span class="isaform_decimal">PAR_SH_0 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        This value is added to the SH set point when active porwer is 0%.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV20</td>
+                    <td>Offset for superheating at 25% power activation</td>
+                    <td><span class="isaform_decimal">PAR_SH_25 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        This value is added to the SH set point when active porwer is 25%.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV21</td>
+                    <td>Offset for superheating at 50% power activation</td>
+                    <td><span class="isaform_decimal">PAR_SH_50 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        This value is added to the SH set point when active porwer is 50%.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV22</td>
+                    <td>Offset for superheating at 75% power activation</td>
+                    <td><span class="isaform_decimal">PAR_SH_75 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        This value is added to the SH set point when active porwer is 75%.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV23</td>
+                    <td>Offset for superheating at 100% power activation</td>
+                    <td><span class="isaform_decimal">PAR_SH_100 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">&degK
+                      <span class="tooltiptext">
+                        This value is added to the SH set point when active porwer is 100%.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV24</td>
+                    <td>XEV20D driver maximum steps</td>
+                    <td><span class="isaform_dint">PAR_XEV20_MAX_STEPS</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">steps
+                      <span class="tooltiptext">
+                        Value between 0-800
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV25</td>
+                    <td>XEV20D driver step reate</td>
+                    <td><span class="isaform_dint">PAR_XEV20_STEP_RATE</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">steps/s
+                      <span class="tooltiptext">
+                        Value between 0-600
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV26</td>
+                    <td>XEV20D driver extra steps</td>
+                    <td><span class="isaform_dint">PAR_XEV20_EXTRA_STEPS</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">steps
+                      <span class="tooltiptext">
+                        Value between 1-500
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV27</td>
+                    <td>XEV20D driver relax steps</td>
+                    <td><span class="isaform_dint">PAR_XEV20_RELAX_STEPS</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">steps
+                      <span class="tooltiptext">
+                        Value between 0-500
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV28</td>
+                    <td>XEV20D driver peak current</td>
+                    <td><span class="isaform_dint">PAR_XEV20_PEAK_CURRENT</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">mA
+                      <span class="tooltiptext">
+                        Value between 1-100
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV29</td>
+                    <td>XEV20D driver holding current</td>
+                    <td><span class="isaform_dint">PAR_XEV20_HOLDING_CURRENT</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">mA
+                      <span class="tooltiptext">
+                        Value between 1-100
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>EEV30</td>
+                    <td>XEV20D type of valve</td>
+                    <td><span class="isaform_dint">PAR_XEV20_VALVE_TYPE</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">steps
+                      <span class="tooltiptext">
+                        0=unipolar, 1=bipolar wave mode, 2=bipolar normal
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <h5>THERMOSTATS</h5>
+              <div class="content table-responsive">
+                <table class="table" align="center" width="100%">
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                      <th>Value</th>
+                      <th>Extra info</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>TER01</td>
+                    <td>Probe for Thermostat 1</td>
+                    <td><select id='sel-TER01' onchange='selected(this,"TER01")'></select></td>
+                    <td id='copy-TER01'></td>
+                    <td><span id='TER01' class="isaform_dint"
+                        style='visibility:hidden; z-index:-4; position:absolute'>PAR_TERM1_SONDA</span></td>
+                  </tr>
+                  <tr>
+                    <td>TER02</td>
+                    <td>Set-point for Thermostat 1</td>
+                    <td><span class="isaform_decimal">PAR_TERM1_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Set-point for thermostat. Units are related with type of probe
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER03</td>
+                    <td>Band for Thermostat 1</td>
+                    <td><span class="isaform_decimal">PAR_TERM1_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Bandwidth for thermostat. Units are related with type of probe.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER04</td>
+                    <td>Action for Thermostat 1</td>
+                    <td><span class="isaform_dint">PAR_TERM1_ACTION</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        0=Reverse(ON if decrease) ,1=Direct(ON if increase)
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER05</td>
+                    <td>Probe for Thermostat 2</td>
+                    <td><select id='sel-TER05' onchange='selected(this,"TER05")'></select></td>
+                    <td id='copy-TER05'></td>
+                    <td><span id='TER05' class="isaform_dint"
+                        style='visibility:hidden; z-index:-4; position:absolute'>PAR_TERM2_SONDA</span></td>
+                  </tr>
+                  <tr>
+                    <td>TER06</td>
+                    <td>Set-point for Thermostat 2</td>
+                    <td><span class="isaform_decimal">PAR_TERM2_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Set-point for thermostat. Units are related with type of probe
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER07</td>
+                    <td>Band for Thermostat 2</td>
+                    <td><span class="isaform_decimal">PAR_TERM2_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Bandwidth for thermostat. Units are related with type of probe.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER08</td>
+                    <td>Action for Thermostat 2</td>
+                    <td><span class="isaform_dint">PAR_TERM2_ACTION</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        0=Reverse(ON if decrease) ,1=Direct(ON if increase)
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER09</td>
+                    <td>Probe for Thermostat 3</td>
+                    <td><select id='sel-TER09' onchange='selected(this,"TER09")'></select></td>
+                    <td id='copy-TER09'></td>
+                    <td><span id='TER09' class="isaform_dint"
+                        style='visibility:hidden; z-index:-4; position:absolute'>PAR_TERM3_SONDA</span></td>
+                  </tr>
+                  <tr>
+                    <td>TER10</td>
+                    <td>Set-point for Thermostat 3</td>
+                    <td><span class="isaform_decimal">PAR_TERM3_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Set-point for thermostat. Units are related with type of probe
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER11</td>
+                    <td>Band for Thermostat 3</td>
+                    <td><span class="isaform_decimal">PAR_TERM3_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Bandwidth for thermostat. Units are related with type of probe.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER12</td>
+                    <td>Action for Thermostat 3</td>
+                    <td><span class="isaform_dint">PAR_TERM3_ACTION</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        0=Reverse(ON if decrease) ,1=Direct(ON if increase)
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER13</td>
+                    <td>Probe for Thermostat 4</td>
+                    <td><select id='sel-TER13' onchange='selected(this,"TER13")'></select></td>
+                    <td id='copy-TER13'></td>
+                    <td><span id='TER13' class="isaform_dint"
+                        style='visibility:hidden; z-index:-4; position:absolute'>PAR_TERM4_SONDA</span></td>
+                  </tr>
+                  <tr>
+                    <td>TER14</td>
+                    <td>Set-point for Thermostat 4</td>
+                    <td><span class="isaform_decimal">PAR_TERM4_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Set-point for thermostat. Units are related with type of probe
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER15</td>
+                    <td>Band for Thermostat 4</td>
+                    <td><span class="isaform_decimal">PAR_TERM4_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Bandwidth for thermostat. Units are related with type of probe.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER16</td>
+                    <td>Action for Thermostat 4</td>
+                    <td><span class="isaform_dint">PAR_TERM4_ACTION</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        0=Reverse(ON if decrease) ,1=Direct(ON if increase)
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER17</td>
+                    <td>Probe for Thermostat 5</td>
+                    <td><select id='sel-TER17' onchange='selected(this,"TER17")'></select></td>
+                    <td id='copy-TER17'></td>
+                    <td><span id='TER17' class="isaform_dint"
+                        style='visibility:hidden; z-index:-4; position:absolute'>PAR_TERM5_SONDA</span></td>
+                  </tr>
+                  <tr>
+                    <td>TER18</td>
+                    <td>Set-point for Thermostat 5</td>
+                    <td><span class="isaform_decimal">PAR_TERM5_SET 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Set-point for thermostat. Units are related with type of probe
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER19</td>
+                    <td>Band for Thermostat 5</td>
+                    <td><span class="isaform_decimal">PAR_TERM5_BAND 10 0 1</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        Bandwidth for thermostat. Units are related with type of probe.
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>TER20</td>
+                    <td>Action for Thermostat 5</td>
+                    <td><span class="isaform_dint">PAR_TERM5_ACTION</span></td>
+                    <!--Ejemplo de globo de ayuda-->
+                    <td class="intar-tooltip">#
+                      <span class="tooltiptext">
+                        0=Reverse(ON if decrease) ,1=Direct(ON if increase)
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- Scripts de Intarcon -->
+  <script src="js/scripts.js"></script>
+  <script src="js/intarcon.js"></script>
+  <script src="js/parameters.js"></script>
+  <script src="js/input-output-config.js"></script>
+</body>
+
+</html>

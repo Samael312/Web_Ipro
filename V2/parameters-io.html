@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script src="js/head.js"></script>
+</head>
+
+  <body class="sb-nav-fixed">
+  <div id="topnav-root"></div>
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav"></div>
+    <div id="layoutSidenav_content">
+      <main>
+        <div class="container-fluid p-3">
+          <form id="formulario">
+            <div class="d-flex justify-content-center row">
+              <h3 id="not-perms" class="text-center" style="display: none;">
+                <strong>You do not have permissions to modify parameters</strong>
+              </h3>
+              <h3 id="warning" class="text-center" style="display: none;"><strong>Please do not close or
+                  reload this window</strong></h3>
+              <div id="main-load" class="spinner-border" role="status"
+                style="width: 6rem; height: 6rem;color: #1a82ba;">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+
+            <!--Tecla para aplicar los cambios realizados en los parametros-->
+            <div id="submit-div" align="center" style="display: none;">
+              <span class="isaform_submit">
+                <button class="btn alarm-button" onclick="submitChanges()">
+                  SUBMIT CHANGES
+                </button>
+              </span>
+            </div>
+
+            <!--Tabla con parametros de configuracion-->
+            <div id="parameters-conf" class="intar-accordion" style="display: none;">
+              <!-- Configuracion entradas digitales -->
+              <h5 data-i18n="DIGITAL INPUTS CONFIGURATION">DIGITAL INPUTS CONFIGURATION</h5>
+              <div class="content table-responsive">
+                <table class="table" id="di-table" align="center" width="100%"></table>
+              </div>
+              <!-- Configuracion entradas analogicas -->
+              <h5 data-i18n="PROBES CONFIGURATION">PROBES CONFIGURATION</h5>
+              <div class="content table-responsive">
+                <table class="table" id="ai-table" align="center" width="100%"></table>
+              </div>
+              <!-- Configuracion salidas digitales -->
+              <h5 data-i18n="RELAY OUTPUT CONFIGURATION">RELAY OUTPUT CONFIGURATION</h5>
+              <div class="content table-responsive">
+                <table class="table" id="do-table" align="center" width="100%"></table>
+              </div>
+              <!-- Configuracion salidas analogicas -->
+              <h5 data-i18n="ANALOG OUTPUT CONFIGURATION">ANALOG OUTPUTS CONFIGURATION</h5>
+              <div class="content table-responsive">
+                <table class="table" id="ao-table" align="center" width="100%"></table>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- Scripts de Librerias -->
+
+  <script src="js/po2json.js"></script>
+  <script src="js/lib/i18next.min.js"></script>
+  <script src="js/lang/i18next-init.js"></script>
+  <script src="js/lib/jquery.min.js"></script>
+  <script src="js/lib/dixell.js"></script>
+  <script src="js/layout.js"></script>
+  <script>window.mountLayout('parameters-io');</script>
+  <!-- Scripts de Intarcon -->
+  <script src="js/scripts.js"></script>
+  <script src="js/intarcon.js"></script>
+  <script src="js/parameters-io.js"></script>
+  <script src="js/input-output-config.js"></script>
+  <script src="js/lang/translate-page.js"></script>
+</body>
+
+</html>

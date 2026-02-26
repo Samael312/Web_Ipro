@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script src="js/head.js"></script>
+</head>
+
+<body class="sb-nav-fixed">
+  <div id="topnav-root"></div>
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav"></div>
+    <div id="layoutSidenav_content">
+      <main>
+        <div class="d-flex justify-content-center row">
+          <div id="main-load" class="spinner-border m-3" role="status" style="width: 6rem; height: 6rem;color: #1a82ba;">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div id="commands" class="container-fluid p-3 text-center" style="display: none;">
+          <div class="m-3">
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;' data-i18n="COMMANDS">Comandos</h3>
+              <table class="table m-3 w-75 table-borderless" align="center">
+                <tr>
+                  <th style="width: 50%;">Program name: <span class='isavar_string' style='color:red;'>ApplicationRelease 60</span> </th>
+                  <th style="width: 50%;">Hardware version: <span class='intar-bool'>ONOFF_GEN/<span
+                        style='color:blue;'>DIN4</span>/<span style='color:red;'>DIN10</span>/10</span></th>
+                </tr>
+              </table>
+            </div>
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>ON / OFF</h3>
+              <!--Modal del boton ON-->
+              <div id="on-modal" class="modal">
+                <div class="modal-content">
+                  <div class="container">
+                    <h4 class="text-center">UNIT TURNED ON</h4>
+                    <hr />
+                    <p class="text-center">The unit was started!</p>
+                  </div>
+                </div>
+              </div>
+              <!--Modal del boton OFF-->
+              <div id="off-modal" class="modal">
+                <div class="modal-content">
+                  <div class="container">
+                    <h4 class="text-center">UNIT TURNED OFF</h4>
+                    <hr />
+                    <p class="text-center">The unit was stopped!</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" id="on-button" onclick="commitModal(this)">POWER ON</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" id="off-button" onclick="commitModal(this)">POWER OFF</button>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>ALARM MANAGEMENT</h3>
+              <div class="col-3">
+                <!--Modal del reset de alarmas-->
+                <div id="alarm-modal" class="modal">
+                  <div class="modal-content">
+                    <div class="container">
+                      <h4 class="text-center">MANUAL RESET</h4>
+                      <hr />
+                      <p class="text-center">Alarms reseted successfully</p>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn alarm-button m-3 mb-4" onclick="resetAlarm()">RESET ALARMS</button>
+              </div>
+              <div id="down-alarm" class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="downloadAlarms(checkSession())">
+                  DOWNLOAD ALARMS</button>
+              </div>
+              <div id="down-warn" class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="downloadWarnings(checkSession())">
+                  DOWNLOAD WARNINGS</button>
+              </div>
+            </div>
+            <div id="manage-param" class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>PARAMETERS FILES MANAGEMENT</h3>
+              <!--Modal de Escribir Parámetros-->
+              <div id="write-modal" class="modal">
+                <div class="modal-content">
+                  <div class="container">
+                    <h4 class="text-center">PARAMETERS MANAGEMENT</h4>
+                    <hr />
+                    <p class="text-center">Parameters writed successfully</p>
+                  </div>
+                </div>
+              </div>
+              <!--Modal de Cargar Parámetros-->
+              <div id="load-modal" class="modal">
+                <div class="modal-content">
+                  <div class="container">
+                    <h4 class="text-center">PARAMETERS MANAGEMENT</h4>
+                    <hr />
+                    <p class="text-center">Parameters loaded successfully</p>
+                  </div>
+                </div>
+              </div>
+              <table class="table w-75 m-3" align="center">
+                <tr>
+                  <th>DEFAULT PARAMETERS</th>
+                  <td><button class="btn alarm-button" onclick="map_management('loadDefault');">Load</button></td>
+                  <td><button id="write-default" class="btn alarm-button"
+                      onclick="map_management('writeDefault');">Write</button></td>
+                </tr>
+                <tr>
+                  <th>BACKUP PARAMETERS</td>
+                  <td><button class="btn alarm-button" onclick="map_management('loadBackup');">Load</button></td>
+                  <td><button class="btn alarm-button" onclick="map_management('writeBackup');">Write</button></td>
+                </tr>
+                <tr>
+                  <th>SERVICE PARAMETERS</th>
+                  <td><button class="btn alarm-button" onclick="map_management('loadService');">Load</button></td>
+                  <td><button class="btn alarm-button" onclick="map_management('writeService');">Write</button></td>
+                </tr>
+              </table>
+            </div>
+            <div id="manage-log" class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>LOG FILES MANAGEMENT</h3>
+              <!--Modal del LOG-->
+              <div id="log-modal" class="modal">
+                <div class="modal-content">
+                  <div class="container">
+                    <h4 class="text-center">ERASE LOG</h4>
+                    <hr />
+                    <p class="text-center">Log erased successfully</p>
+                  </div>
+                </div>
+              </div>
+              <table class="table w-75 m-3" align="center">
+                <tr>
+                  <th>ERASE ALARM LOG FILE</th>
+                  <td>
+                    <div onclick="log_alert()"> <span class="isamod_boolwrt">RESET_DATALOG_ALARMS TRUE ERASE</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>ERASE DATALOG FILES</th>
+                  <td>
+                    <div onclick="log_alert()"> <span class="isamod_boolwrt">reset_log TRUE ERASE</span> </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div id='simulator' class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>SIMULATOR MODE</h3>
+              <!--Modal del Simulador-->
+              <div id="simulator-modal" class="modal">
+                <div class="modal-content">
+                  <div class="container">
+                    <h4 class="text-center">SIMULATOR</h4>
+                    <hr />
+                    <p class="text-center">Changed successfully</p>
+                  </div>
+                </div>
+              </div>
+              <table class="table w-75 m-3" align="center">
+                <tr>
+                  <th>SIMULATOR MODE (STATUS: <span class='isavar_bool' style='color:blue;'>SIMULADOR "ON" "OFF" 10</span>) </th>
+                  <td>
+                    <div id="parameters" onclick="simulator_alert()">
+                      <span class="isamod_boolwrt">SIMULADOR TRUE ON</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div id="parameters" onclick="simulator_alert()">
+                      <span class="isamod_boolwrt">SIMULADOR FALSE OFF</span>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- Scripts de Librerias -->
+
+  <script src="js/po2json.js"></script>
+  <script src="js/lib/i18next.min.js"></script>
+  <script src="js/lang/i18next-init.js"></script>
+  <script src="js/lib/jquery.min.js"></script>
+  <script src="js/lib/dixell.js"></script>
+  <script src="js/layout.js"></script>
+  <script>window.mountLayout('commands');</script>
+  <!-- Scripts de Intarcon -->
+  <script src="js/scripts.js"></script>
+  <script src="js/intarcon.js"></script>
+  <script src="js/comands.js"></script>
+</body>
+  <script src="js/lang/translate-page.js"></script>
+
+</html>

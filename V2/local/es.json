@@ -1,0 +1,23 @@
+{
+  "static_translation": {
+    "MAIN": "Inicio",
+    "STATUS": "Estado",
+    "ALARMS": "Alarmas",
+    "ALARM": "Alarma",
+    "INPUT/OUTPUT": "Entradas/Salidas",
+    "LAYOUT": "Esquema",
+    "EEV": "EEV",
+    "GRAPHS": "Gráficas",
+    "PARAMETERS": "Parámetros",
+    "PARAMETERS CONF": "Conf. Parámetros",
+    "I/O's CONF": "Conf. E/S",
+    "COMMANDS": "Comandos",
+    "CONTROL PANEL": "Panel de Control",
+    "LOGIN": "Acceder",
+    "Log In": "Iniciar sesión",
+    "Username": "Usuario",
+    "Password": "Contraseña",
+    "* Username or password incorrect": "* Usuario o contraseña incorrectos"
+  },
+  "dynamic_translation": {  }
+}
