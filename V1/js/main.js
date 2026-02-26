@@ -50,6 +50,13 @@ function getSensorHtml(hasData, sensorTag) {
   return `<span style="color:#dc3545; font-weight:bold; background:rgba(255,255,255,0.8); padding:2px 5px; border-radius:4px; font-size:12px; box-shadow: 0px 0px 3px rgba(0,0,0,0.3);">${sensorTag}</span>`;
 }
 
+function getCounterHtml(hasData, counterTag) {
+  if (hasData) {
+    return `<span class='intar-decimal'>${counterTag}</span>`;
+  }
+  return `<span style="color:#dc3545; font-weight:bold; background:rgba(255,255,255,0.8); padding:2px 5px; border-radius:4px; font-size:12px; box-shadow: 0px 0px 3px rgba(0,0,0,0.3);">${counterTag}</span>`;
+}
+
 // Función de ayuda para las imágenes dinámicas/displays
 function getDisplayHtml(hasData, displayTag) {
   if (hasData) {
@@ -64,81 +71,93 @@ function main_table(hasData) {
     `<div style="" class="row" id="Grid-Container"><div style="position: relative;">
       <img src="layout01.png" style="width: 100%;height: calc(100vh - 88px);">
       
-      <div style="position:absolute; top:42%; left:87%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:32%; left:47%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S1/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:49%; left:87%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:46%; left:32%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S2/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:43%; left:38%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:29%; left:75%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S3/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:74%; left:44%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:9%; left:35%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S4/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:30%; left:24%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:31%; left:6%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S5/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:24%; left:24%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:53%; left:24%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S6/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:6%; left:21%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:5%; left:5%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S7/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:73%; left:77%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:7%; left:65%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S14/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:66%; left:77%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:9%; left:65%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S15/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:51%; left:7%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:24%; left:90%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S24/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:45%; left:7%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:26%; left:90%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S25/10/0/1/5')}
       </div>
-      <div style="position:absolute; top:33%; left:8%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:57%; left:8%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S26/10/0/1/5')}
       </div>
       <div style="position:absolute; top:6%; left:85%; background:rgba(255, 255, 255, 0); padding:8px; border-radius:6px;">
         ${getSensorHtml(hasData, 'Pb_T_S27/10/0/1/5')}
       </div>
       
-      <div style="position:absolute; top:55%; left:58%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:38%; left:50%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
         ${getDisplayHtml(hasData, 'RL_BOMBAS_G1')}
       </div>
       <div style="position:absolute; top:60%; left:49%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
         ${getDisplayHtml(hasData, 'RL_BOMBAS_G2')}
       </div>
-      <div style="position:absolute; top:64%; left:53%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:35%; left:33%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
         ${getDisplayHtml(hasData, 'RL_BOMBAS_G3')}
       </div>
-      <div style="position:absolute; top:54%; left:34%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:45%; left:78%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
         ${getDisplayHtml(hasData, 'RL_BOMBAS_G4')}
       </div>
-      <div style="position:absolute; top:45%; left:31%; background:rgba(255,255,255,0); padding:8px; border-radius:6px; transform: rotate(90deg);">
+      <div style="position:absolute; top:60%; left:84%; background:rgba(255,255,255,0); padding:8px; border-radius:6px; transform: rotate(90deg);">
         ${getDisplayHtml(hasData, 'RL_BOMBAS_G5')}
       </div>
-      <div style="position:absolute; top:13.5%; left:18.5%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:21%; left:6%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
         ${getDisplayHtml(hasData, 'RL_BOMBA_G6')}
       </div>
-      <div style="position:absolute; top:41%; left:62%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:20%; left: 58%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
         ${getDisplayHtml(hasData, 'RL_ENABLE_INTAR_BIG')}
       </div>
-      <div style="position:absolute; top:68%; left:22%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
-        ${getDisplayHtml(hasData, 'RL_ENABLE_CIATESA')}
-      </div>
-      <div style="position:absolute; top:68%; left:11%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:20%; left:29%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
         ${getDisplayHtml(hasData, 'RL_ENABLE_INTAR_SMALL')}
       </div>
-      <div style="position:absolute; top:60%; left:21%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:40%; left:85%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
         ${getDisplayHtml(hasData, 'RL_ENABLE_BDC_KEYTER')}
       </div>
-      <div style="position:absolute; top:53%; left:39%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+      <div style="position:absolute; top:42%; left:68%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
         ${getDisplayHtml(hasData, 'RL_ELECT_HEATER_REC')}
       </div>
-      <div style="position:absolute; top:41%; left:72%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
-        ${getDisplayHtml(hasData, 'RL_ENABLE_INTAR_BIG')}
+      <div style="position:absolute; top:84%; left:29%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+        ${getCounterHtml(hasData, 'ST_LITROS_C1/10/0/1/5')}
+      </div>
+      <div style="position:absolute; top:74%; left:15%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+        ${getCounterHtml(hasData, 'ST_LITROS_C2/10/0/1/5')}
+      </div>
+      <div style="position:absolute; top:89%; left:29%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+        ${getCounterHtml(hasData, 'ST_LITROS_C3/10/0/1/5')}
+      </div>
+      <div style="position:absolute; top:17%; left:3%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+        ${getCounterHtml(hasData, 'ST_LITROS_C4/10/0/1/5')}
+      </div>
+      <div style="position:absolute; top:65%; left:5%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+        ${getCounterHtml(hasData, 'ST_LITROS_C5/10/0/1/5')}
+      </div>
+      <div style="position:absolute; top:78%; left:29%; background:rgba(255,255,255,0); padding:8px; border-radius:6px;">
+        ${getCounterHtml(hasData, 'ST_LITROS_C6/10/0/1/5')}
       </div>
     </div>`;
 
