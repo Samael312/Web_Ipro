@@ -1,5 +1,5 @@
 var domain = ""
-//var domain = "http://192.168.0.170"
+//var domain = "http://172.17.123.250"
 var cgi_bin = domain + "/cgi-bin/";
 var defaults;
 var enums;

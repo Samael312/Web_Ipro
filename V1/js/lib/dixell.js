@@ -1,5 +1,5 @@
 var domain = ""
-//var domain = "http://192.168.0.170"
+//var domain = "http://172.17.123.250"
 
 var dixell_js_version = "1.3",
   get_cgi = domain + "/cgi-bin/jgetvar.cgi",

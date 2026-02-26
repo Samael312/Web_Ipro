@@ -1,69 +1,81 @@
-﻿var domain = ""
+﻿var domain = "";
 //var domain = "http://172.17.123.250"
 
-//Generacion de la tabla de entradas y salidas dentro del elemento correspondiente del accordion
+// Generación de la tabla de entradas y salidas dentro del elemento correspondiente del accordion
 $(document).ready(function () {
   var user = magcheck_user();
+  
   if (user) {
     if (user === "User") {
-      document.getElementById('main-load').style.display = "none";    // Ocultamos el spinner
+      document.getElementById('main-load').style.display = "none"; // Ocultamos el spinner
       document.getElementById('not-perms').style.display = "block";
     } else {
-      load()
+      load();
       setTimeout(function () {
-        //Se genera la tabla y se oculta el loader pasado un tiempo
-        htmlGenerator(gasType, 'sel-CNF04', 'CNF04', 'copy-CNF04');
-        htmlGenerator(aiConf, 'sel-TER01', 'TER01', 'copy-TER01');
-        htmlGenerator(aiConf, 'sel-TER05', 'TER05', 'copy-TER05');
-        htmlGenerator(aiConf, 'sel-TER09', 'TER09', 'copy-TER09');
-        htmlGenerator(aiConf, 'sel-TER13', 'TER13', 'copy-TER13');
-        htmlGenerator(aiConf, 'sel-TER17', 'TER17', 'copy-TER17');
-        //Ocultar el grafico de carga y mostrar parameteros
-        document.getElementById('main-load').style.display = "none";    // Ocultamos el spinner
+        // Genera las tablas y oculta el loader pasado un tiempo
+        const configs = [
+          { vector: gasType, select: 'sel-CNF04', valor: 'CNF04', id: 'copy-CNF04' },
+          { vector: aiConf, select: 'sel-TER01', valor: 'TER01', id: 'copy-TER01' },
+          { vector: aiConf, select: 'sel-TER05', valor: 'TER05', id: 'copy-TER05' },
+          { vector: aiConf, select: 'sel-TER09', valor: 'TER09', id: 'copy-TER09' },
+          { vector: aiConf, select: 'sel-TER13', valor: 'TER13', id: 'copy-TER13' },
+          { vector: aiConf, select: 'sel-TER17', valor: 'TER17', id: 'copy-TER17' }
+        ];
+        
+        // Generar las tablas
+        configs.forEach(config => htmlGenerator(config.vector, config.select, config.valor, config.id));
+        
+        // Ocultar el gráfico de carga y mostrar parámetros
+        document.getElementById('main-load').style.display = "none";
         document.getElementById('submit-div').style.display = "block";
         document.getElementById('parameters-conf').style.display = "block";
       }, 25000);
     }
   } else {
     document.getElementById('main-load').style.display = "none";
-    modal_login.style.display = "block"
+    modal_login.style.display = "block";
   }
 });
 
-//Funcion para ocultar todos los parametros y mostrar el loader de carga y actualizar la pagina pasado un tiempo
+// Función para ocultar todos los parámetros, mostrar el loader y actualizar la página después de un tiempo
 function submitChanges() {
   document.getElementById('submit-div').style.display = "none";
   document.getElementById('parameters-conf').style.display = "none";
   document.getElementById('warning').style.display = "block";
   document.getElementById('main-load').style.display = "block";
-  setTimeout(function () { location.reload(true); }, 25000);
+  setTimeout(() => location.reload(true), 25000);
 }
 
-//Funcion para generar el html de los select
+// Función para generar el HTML de los select
 function htmlGenerator(vector, select, valor, id) {
-  var html = '';
-  var html2 = '';
-  var y = document.getElementById(valor);
-  for (var i = 0; i < vector.length; i++) {
+  const y = document.getElementById(valor);
+  let html = '', html2 = '';
+  
+  vector.forEach((item, i) => {
     if (i == parseInt(y.value)) {
-      html += "<option value='" + i + "' selected>" + vector[i] + "</option>";
-      html2 += "<input readonly disabled value='" + vector[i] + "'></input>";
+      html += `<option value='${i}' selected>${item}</option>`;
+      html2 += `<input readonly disabled value='${item}'></input>`;
+    } else {
+      html += `<option value='${i}'>${item}</option>`;
     }
-    else { html += "<option value='" + i + "'>" + vector[i] + "</option>"; }
-  }
+  });
+
   document.getElementById(select).innerHTML = html;
   document.getElementById(id).innerHTML = html2;
 }
 
-//Funcion para aplicar el valor del select
+// Función para aplicar el valor del select
 function selected(select, valor) {
-  var x = select.selectedIndex;
-  var y = document.getElementById(valor);
+  const x = select.selectedIndex;
+  const y = document.getElementById(valor);
   y.value = x;
 }
 
-//Carga de los scripts
+// Carga de los scripts
 function load() {
-  //Carga de las funciones intar
-  $.ajax({ url: 'js/lib/dixell.js', dataType: 'script', crossDomain: true, success: function () { } });
-};
+  $.ajax({ 
+    url: 'js/lib/dixell.js', 
+    dataType: 'script', 
+    crossDomain: true 
+  });
+}
