@@ -173,70 +173,83 @@ function intarDecimal() {
   Decimales: Numero de decimales que se van a mostrar. Debe ser un numero
   Tiempo: Tiempo para realizar la siguiente consulta
   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡Ejemplo para copiar y pegar!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  <span class="intar-decimal">Pb_P_evap1/10/0/1/10</span>*/
-  //Se crean las variables que se van a utilizar en la funcion
-  var length = $('.intar-decimal').length;						//Guarda el numero de etiquetas con la clase 'intar-decimal'
-  var name = [];													//Guarda el nombre de la variable que se va a consultar
-  var divisor = [];												//Guarda el divisor de cada variabl
-  var offset = [];												//Guarda el offset que se le va a añadir o sustraer al valor obtenido
-  var decimals = [];												//Guarda el numero de decimales que se van a mostrar en cada variable
-  var refreshTime = [];											//Guarda el tiempo de refresco de las variables
-  var variableId = [];											//Guarda la id de cada variable evaluada
+ /* Nueva sintaxis:
+  <span class='intar-decimal'>Nombre/Divisor/Offset/Decimales/Tiempo/Unidad(Opcional)</span>
+  Ejemplo: Pb_P_evap1/10/0/1/10/ºC o Pb_P_evap1/10/0/1/10/BAR
+  */
+  var length = $('.intar-decimal').length; 
+  var name = []; 
+  var divisor = []; 
+  var offset = []; 
+  var decimals = []; 
+  var refreshTime = []; 
+  var unit = []; // NUEVO: Guarda la unidad
+  var variableId = []; 
   var i = 0;
-  //Para cada elemento con la clase 'intar_decimal' se realizan las acciones pertinentes
+
   $('.intar-decimal').each(function () {
-    var text = '';												//Variable temporal que va a contener el texto en caso de error
-    var htmlContent = this.textContent.split("/");   			//Se trocea el texto que hay en el html separandolo por /
-    //Se guardan en los vectores correspondientes los parametros de la variable a consultar
+    var text = ''; 
+    var htmlContent = this.textContent.split("/"); 
+
     name[i] = htmlContent[0];
     divisor[i] = parseInt(htmlContent[1]);
     offset[i] = parseInt(htmlContent[2]);
     decimals[i] = parseInt(htmlContent[3]);
     refreshTime[i] = parseInt(htmlContent[4]);
-    //Se comprueba que los valores numericos introducidos son correctos
-    for (var j = 1; j < htmlContent.length; j++) {
-      if (isNaN(htmlContent[j])) {
+    
+    // NUEVO: Si existe un 6º elemento, lo guardamos como unidad. Si no, lo dejamos en blanco.
+    unit[i] = htmlContent[5] ? htmlContent[5] : ''; 
+
+    // MODIFICADO: Solo comprobamos si son números del índice 1 al 4 (la unidad en el 5 es texto)
+    for (var j = 1; j <= 4; j++) {
+      if (htmlContent[j] !== undefined && isNaN(htmlContent[j])) {
         text = 'Not a number!';
         break;
       }
     }
-    //Se le asigna un ID a cada elemento 
+
     this.id = 'intar-dec' + i;
     variableId[i] = this.id;
-    //Se realiza la peticion ajax si esta bien la sintaxis
-    if (text != 'Not a number!') { ajaxDecimal(name[i], divisor[i], offset[i], decimals[i], refreshTime[i], variableId[i]); }
-    //Si la sintaxis esta mal, le asigna el texto de error
-    else { document.getElementById(variableId[i]).innerHTML = text; }
+
+    if (text != 'Not a number!') { 
+      // NUEVO: Pasamos unit[i] a la petición
+      ajaxDecimal(name[i], divisor[i], offset[i], decimals[i], refreshTime[i], variableId[i], unit[i]); 
+    } else { 
+      document.getElementById(variableId[i]).innerHTML = text; 
+    }
     i++;
   });
 }
 
-//Funcion de la peticion ajax de los valores enteros
-function ajaxDecimal(name, divisor, offset, decimals, refreshTime, variableId) {
+// NUEVO: Recibe la variable 'unit'
+function ajaxDecimal(name, divisor, offset, decimals, refreshTime, variableId, unit) {
   $.ajax({
     crossOrigin: true,
     crossDomain: true,
-    url: domain + "/cgi-bin/jgetvar.cgi?name=" + name, //Se realiza la consulta al registro correspondiente
+    url: domain + "/cgi-bin/jgetvar.cgi?name=" + name, 
     data: { get_param: 'value' },
     cache: false,
     dataType: 'json',
-    //En caso de exito, se guarda el valor y se muestra
     success: function (data) {
-      htmlDecimal(data, divisor, offset, decimals, variableId);
+      // NUEVO: Pasamos 'unit' a la función que pinta el HTML
+      htmlDecimal(data, divisor, offset, decimals, variableId, unit);
       setTimeout(function () {
-        ajaxDecimal(name, divisor, offset, decimals, refreshTime, variableId);
+        ajaxDecimal(name, divisor, offset, decimals, refreshTime, variableId, unit);
       }, refreshTime * 1000);
     },
-    //En caso de fallo, se muestra un texto de error
     error: function () { document.getElementById(variableId).innerHTML = 'Wrong register!'; }
   });
 }
 
-//Funcion para convertir el dato segun sus caracteristicas
-function htmlDecimal(data, divisor, offset, decimals, variableId) {
+// NUEVO: Recibe la variable 'unit' y la concatena al final
+function htmlDecimal(data, divisor, offset, decimals, variableId, unit) {
   var value = data[0].value;
   var text = parseFloat(Math.round(value + offset) / divisor).toFixed(decimals);
-  document.getElementById(variableId).innerHTML = text;
+  
+  // Si hay unidad, le añadimos un espacio antes. Si no, nada.
+  var unitHtml = unit ? " " + unit : "";
+  
+  document.getElementById(variableId).innerHTML = text + unitHtml;
 }
 
 /*------------------------------------------INTAR DISPLAY------------------------------------------*/

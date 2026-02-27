@@ -245,3 +245,18 @@ div#parameters-conf.intar-accordion {
   visibility: visible;
   opacity: 1;
 }
+
+.draggable {
+  cursor: move;
+  position: absolute;
+  z-index: 1000;
+  border: 1px solid rgba(0, 0, 0, 0.3); 
+  padding: 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.8); 
+}
+
+.resizable {
+  resize: both;
+  overflow: hidden;
+}
