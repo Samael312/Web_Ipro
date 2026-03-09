@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>kiControl: NOMBRE_CONTROL</title>
+  <title>kiControl: ICOENERGIA</title>
   <link rel="icon" href="assets/logos/Logo-simple-azul.png" />
   <link href="css/boostrap.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
@@ -142,26 +142,44 @@
     </div>
     <div id="layoutSidenav_content">
       <main>
-        <div class="container-fluid p-3 text-center">
-          <!--Botones para mostrar u ocultar las tablas de entradas y salidas-->
-          <div align="center" id="input-output-buttons" class="mb-3">
-            <button id='analog-input-button' class='btn circuit-button mb-3' onclick='hideTable(this)'
-              style='background-color:gray;'>ENTRADAS ANALOGICAS</button>
-            <button id='analog-output-button' class='btn circuit-button mb-3' onclick='hideTable(this)'
-              style='background-color:gray;'>SALIDAS ANALOGICAS</button>
-            <button id='digital-input-button' class='btn circuit-button mb-3' onclick='hideTable(this)'
-              style='background-color:gray;'>ENTRADAS DIGITALES</button>
-            <button id='digital-output-button' class='btn circuit-button mb-3' onclick='hideTable(this)'
-              style='background-color:gray;'>SALIDAS DIGITALES</button>
+        <div class="container-fluid p-3">
+          <div class="d-flex justify-content-center row">
+            <div id="main-load" class="spinner-border" role="status" style="width: 6rem; height: 6rem;color: #1a82ba;">
+              <span class="visually-hidden">Loading...</span>
+            </div>
           </div>
-          <!-- Entradas analogicas -->
-          <div style="display: none;" id="ai-values" class="row justify-content-center"></div>
-          <!-- Salidas analogicas -->
-          <div style="display: none;" id="ao-values" class="row justify-content-center"></div>
-          <!-- Entradas digitales -->
-          <div style="display: none;" id="di-values" class="row justify-content-center"></div>
-          <!-- Salidas digitales -->
-          <div style="display: none;" id="do-values" class="row justify-content-center"></div>
+          <div style="display: none;" id="Grid-Container">
+            <div id="alarmas" align="center">
+              <h3 class='text-center' style='background-color: #d9daff;'>Alarmas Activas</h3>
+              <h5 id="alarm-list" style="text-align: left; margin-left: 20px; display: none;">
+                Sin alarmas activas</h5>
+              <div class="row justify-content-center">
+                <div class="col-10">
+                  <table class="table table-striped" id="alarm-table" align="center"></table>
+                </div>
+              </div>
+            </div>
+            <div id="historico" align="center">
+              <h3 class='text-center' style='background-color: #d9daff;'>Historico de Alarmas</h3>
+              <h5 id="alarm-histo" style="text-align: left; margin-left: 20px; display: none;">
+                Sin historico de alarmas</h5>
+              <div class="row justify-content-center">
+                <div class="col-10">
+                  <table class="table table-striped" id="alarm-table-histo" align="center"></table>
+                </div>
+              </div>
+            </div>
+            <div id="avisos" align="center">
+              <h3 class='text-center' style='background-color: #d9daff;'>Warnings</h3>
+              <h5 id="warn-list" style="text-align: left; margin-left: 20px; display: none;">
+                Sin warnings activos</h5>
+              <div class="row justify-content-center">
+                <div class="col-10">
+                  <table class="table table-striped" id="warning-table" align="center"></table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
@@ -170,7 +188,8 @@
   <script src="js/lib/dixell.js"></script>
   <!-- Scripts de Intarcon -->
   <script src="js/scripts.js"></script>
-  <script src="js/input-output.js"></script>
+  <script src="js/intarcon.js"></script>
+  <script src="js/alarms.js"></script>
 </body>
 
 </html>

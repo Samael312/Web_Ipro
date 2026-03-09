@@ -1,0 +1,262 @@
+* {
+  font-family: Arial, Helvetica, sans-serif
+}
+
+body,
+html {
+  height: 100% !important;
+}
+
+.input-login {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 16px;
+}
+
+.container-spinner {
+  background: #eee;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+@media screen and (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+  }
+}
+
+/*Clase para ocultar tablas*/
+.hidden {
+  visibility: hidden;
+}
+
+.circuit-button {
+  background-color: gray;
+  color: white;
+  padding: 5px 10px;
+  font-size: 16px;
+  border: solid 2px #153d52;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.alarm-button {
+  background-color: #1a82ba;
+  color: white;
+  padding: 5px 10px;
+  font-size: 16px;
+  border: solid 2px #153d52;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+h3 {
+  border-radius: 50px;
+  padding: 5px 10px;
+}
+
+/************************
+**Estilo de los modales**
+*************************/
+/*Parametros genericos de los modales*/
+div.intar-modal {
+  display: none;
+  width: 400px;
+  background-color: #1a82ba;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid black;
+  position: relative;
+  z-index: 1;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+/*Parametros de la cabecera del modal*/
+.intar-modal .ui-dialog-header {
+  background-color: #153d52;
+  width: 400px;
+  border-radius: 5px 5px 0 0;
+  padding: 4px 0;
+  margin: 0;
+  border-bottom: 1px solid white;
+}
+
+/*Parametros del texto del modal*/
+.intar-modal p {
+  margin: 0;
+  padding: 20px 0;
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+
+/************************
+**Estilo de los modales**
+*************************/
+/*Parametros genericos de los modales*/
+div.intar-modal {
+  display: none;
+  width: 400px;
+  background-color: #1a82ba;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid black;
+  position: relative;
+  z-index: 1;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+/*Parametros de la cabecera del modal*/
+.intar-modal .ui-dialog-header {
+  background-color: #153d52;
+  width: 400px;
+  border-radius: 5px 5px 0 0;
+  padding: 4px 0;
+  margin: 0;
+  border-bottom: 1px solid white;
+}
+
+/*Parametros del texto del modal*/
+.intar-modal p {
+  margin: 0;
+  padding: 20px 0;
+}
+
+/***********************
+**Estilo del accordion**
+************************/
+div#parameters-conf.intar-accordion {
+  /* margin: 0 auto; */
+  margin-top: 15px;
+}
+.intar-accordion {
+  border: 2px solid #153d52;
+  border-radius: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.intar-accordion h5 {
+  cursor: pointer;
+  margin: 0px 0px;
+  padding: 7px 15px;
+  background-color: #1a82ba;
+  color: white;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.intar-accordion h5:hover {
+  background-color: #70c7f6;
+  color: black;
+}
+
+.intar-accordion .content {
+  padding: 10px 15px;
+  color: black;
+}
+
+.intar-accordion h5.active {
+  background-color: #153d52;
+}
+
+.intar-accordion h5.active:hover {
+  color: white;
+}
+
+.intar-accordion h5:focus {
+  outline: none;
+}
+
+/*********************
+**Estilo del tooltip**
+**********************/
+.intar-tooltip {
+  position: relative;
+  display: inline-block;
+  /* border-bottom: 1px dotted black; */
+}
+
+.intar-tooltip .tooltiptext {
+  visibility: hidden;
+  width: auto;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  left: 200%;
+  margin-left: -60px;
+}
+
+.intar-tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: 99%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #555 transparent transparent;
+}
+
+.intar-tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.draggable {
+  cursor: move;
+  position: absolute;
+  z-index: 1000;
+  border: 1px solid rgba(0, 0, 0, 0.3); 
+  padding: 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.8); 
+}
+
+.resizable {
+  resize: both;
+  overflow: hidden;
+}

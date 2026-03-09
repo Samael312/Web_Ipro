@@ -1,0 +1,31 @@
+# ==========================================
+# .gitignore para Proyecto Web Estático
+# ==========================================
+
+# 1. Archivos comprimidos y backups
+*.zip
+*.tar
+*.tar.gz
+*.rar
+www.zip
+
+# 2. Archivos temporales o del sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+ehthumbs_vista.db
+[Tt]humbs.db
+desktop.ini
+
+# 3. Carpetas de Editores de Código e IDEs (VS Code, WebStorm, etc.)
+.vscode/
+.idea/
+*.suo
+*.sln
+
+# 4. Logs
+*.log
+

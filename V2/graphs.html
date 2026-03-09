@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>kiControl: NOMBRE_CONTROL</title>
+  <title>kiControl: ICOENERGIA</title>
   <link rel="icon" href="assets/logos/Logo-simple-azul.png" />
   <link href="css/boostrap.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
@@ -16,6 +16,9 @@
   <script src="js/lib/moment.min.js"></script>
   <script src="js/lib/j_utility.js"></script>
   <script src="js/lib/fontawesome.js"></script>
+  <!-- Graficas -->
+  <script src="js/lib/apexcharts.js"></script>
+  <script src="js/lib/apexcharts.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -142,35 +145,27 @@
     </div>
     <div id="layoutSidenav_content">
       <main>
-        <div class="container-fluid p-3 text-center">
-          <!--Botones para mostrar u ocultar las tablas de entradas y salidas-->
-          <div align="center" id="input-output-buttons" class="mb-3">
-            <button id='analog-input-button' class='btn circuit-button mb-3' onclick='hideTable(this)'
-              style='background-color:gray;'>ENTRADAS ANALOGICAS</button>
-            <button id='analog-output-button' class='btn circuit-button mb-3' onclick='hideTable(this)'
-              style='background-color:gray;'>SALIDAS ANALOGICAS</button>
-            <button id='digital-input-button' class='btn circuit-button mb-3' onclick='hideTable(this)'
-              style='background-color:gray;'>ENTRADAS DIGITALES</button>
-            <button id='digital-output-button' class='btn circuit-button mb-3' onclick='hideTable(this)'
-              style='background-color:gray;'>SALIDAS DIGITALES</button>
+        <div class="container-fluid p-3">
+          <div class="d-flex justify-content-center row">
+            <div id="main-load" class="spinner-border" role="status" style="width: 6rem; height: 6rem;color: #1a82ba;">
+              <span class="visually-hidden">Loading...</span>
+            </div>
           </div>
-          <!-- Entradas analogicas -->
-          <div style="display: none;" id="ai-values" class="row justify-content-center"></div>
-          <!-- Salidas analogicas -->
-          <div style="display: none;" id="ao-values" class="row justify-content-center"></div>
-          <!-- Entradas digitales -->
-          <div style="display: none;" id="di-values" class="row justify-content-center"></div>
-          <!-- Salidas digitales -->
-          <div style="display: none;" id="do-values" class="row justify-content-center"></div>
+          <div id="graph-ai"></div>
+          <div id="graph-ao"></div>
+          <div id="graph-di"></div>
+          <div id="graph-do"></div>
         </div>
       </main>
     </div>
   </div>
   <!-- Scripts de Librerias -->
   <script src="js/lib/dixell.js"></script>
+  <script src="js/lib/plotly-2.12.1.min.js"></script>
   <!-- Scripts de Intarcon -->
   <script src="js/scripts.js"></script>
-  <script src="js/input-output.js"></script>
+  <script src="js/intarcon.js"></script>
+  <script src="js/graphs.js"></script>
 </body>
 
 </html>
