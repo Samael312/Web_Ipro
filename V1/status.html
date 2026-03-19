@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,7 +8,6 @@
   <link rel="icon" href="assets/logos/Logo-simple-azul.png" />
   <link href="css/boostrap.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
-  <!-- Scripts de Librerias -->
   <script src="js/lib/bootstrap.bundle.min.js"></script>
   <script src="js/lib/jquery.min.js"></script>
   <script src="js/lib/jquery-ui.js"></script>
@@ -20,18 +18,15 @@
 
 <body class="sb-nav-fixed">
   <nav class="sb-topnav navbar navbar-expand navbar-dark">
-    <!-- Logotipo -->
     <a class="ps-3 d-none d-sm-block" href="index.html">
       <img src="assets/logos/Logo-blanco.png" alt="intarLAB" style="width: 190px;" />
     </a>
     <a class="ps-3 d-block d-sm-none" href="index.html">
       <img src="assets/logos/Logo-simple-blanco.png" alt="intarLAB" style="width: 50px;" />
     </a>
-    <!-- Collapse -->
     <button class="btn btn-link btn-sm m-3" id="sidebarToggle" href="#!">
       <i style='font-size: 18; color: white;' class="fas fa-bars"></i>
     </button>
-    <!-- Navbar-->
     <div class="ms-auto">
       <div id="login-modal" class="modal">
         <div class="modal-content">
@@ -41,8 +36,7 @@
             <form id="loginForm">
               <input class="input-login" type="text" placeholder="Username" id="login-username">
               <input class="input-login" type="password" placeholder="Password" id="login-password">
-              <span style="display: none;" id="login-error" class="text-danger">
-                * Username or password incorrect</span>
+              <span style="display: none;" id="login-error" class="text-danger">* Username or password incorrect</span>
               <div id="login_form" class="login_form text-center mt-2" style="display: block;">
                 <button type="submit" class="btn btn-primary">LOGIN</button>
               </div>
@@ -62,20 +56,20 @@
           </span>
         </li>
         <li>&nbsp;&nbsp;&nbsp;</li>
-        <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link"
-          id="login_username"></li>
+        <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link" id="login_username"></li>
         <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link" id="login_logout"
-          role="button" onclick="logOut()">
+            role="button" onclick="logOut()">
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </li>
         <li style="color: white;font-weight: bold; font-size: large;" class="nav-link" role="button"
-          onclick="document.getElementById('login-modal').style.display='block'" id="login_button">LOGIN
+            onclick="document.getElementById('login-modal').style.display='block'" id="login_button">LOGIN
         </li>
       </ul>
     </div>
   </nav>
+
   <div id="layoutSidenav">
-    <<div id="layoutSidenav_nav">
+    <div id="layoutSidenav_nav">
       <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
           <div class="nav">
@@ -83,8 +77,7 @@
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-home"></i></div> PRINCIPAL
             </a>
             <a style="color: white;" class="nav-link" href="status.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-tachometer"></i></div>
-              ESTADO
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-tachometer"></i></div> ESTADO
             </a>
             <a style="color: white;" class="nav-link" href="alarms.html">
               <div class="sb-nav-link-icon">
@@ -93,75 +86,77 @@
               </div> ALARMAS
             </a>
             <a style="color: white;" class="nav-link" href="input-output.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-toggle-off"></i></div>
-              ENTRADAS/SALIDAS
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-toggle-off"></i></div> ENTRADAS/SALIDAS
             </a>
             <a style="color: white;" class="nav-link" href="graphs.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-area-chart"></i></div>
-              GRAFICAS
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-area-chart"></i></div> GRAFICAS
             </a>
             <a style="color: white;" class="nav-link" data-bs-toggle="collapse" data-bs-target="#collapseParameters"
-              aria-expanded="false" aria-controls="collapseParameters">
+               aria-expanded="false" aria-controls="collapseParameters">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-sliders"></i></div>
               PARAMETROS
-              <div class="sb-sidenav-collapse-arrow">
-                <i style="color: white;" class="fas fa-angle-down"></i>
-              </div>
+              <div class="sb-sidenav-collapse-arrow"><i style="color: white;" class="fas fa-angle-down"></i></div>
             </a>
-            <div class="collapse" id="collapseParameters" aria-labelledby="headingOne"
-              data-bs-parent="#sidenavAccordion">
+            <div class="collapse" id="collapseParameters" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
                 <a style="color: white;" class="nav-link" href="parameters.html">
-                  <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i>
-                  </div> CONFIGURACION PARAMETROS
+                  <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i></div> CONFIGURACION PARAMETROS
                 </a>
                 <a style="color: white;" class="nav-link" href="parameters-io.html">
-                  <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i>
-                  </div> CONFIGURACION E/S
+                  <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i></div> CONFIGURACION E/S
                 </a>
               </nav>
             </div>
             <a style="color: white;" class="nav-link" href="commands.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-terminal"></i></div>
-              COMANDOS
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-terminal"></i></div> COMANDOS
             </a>
             <hr>
             <a style="color: white;" class="nav-link" href="/panel/index.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-columns"></i></div>
-              PANEL DE CONTROL
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-columns"></i></div> PANEL DE CONTROL
             </a>
           </div>
         </div>
         <div class="sb-sidenav-footer">
           <div class="text-center">
             <a href="https://www.kiconex.com" target="_blank"
-              style="text-decoration: none;color:white; font-weight: bold;">KICONEX - 2025</a>
+               style="text-decoration: none;color:white; font-weight: bold;">KICONEX - 2025</a>
           </div>
         </div>
       </nav>
     </div>
+
     <div id="layoutSidenav_content">
       <main>
         <div class="container-fluid p-3">
+
+          <!-- Spinner -->
           <div class="d-flex justify-content-center row">
-            <div id="main-load" class="spinner-border" role="status" style="width: 6rem; height: 6rem;color: #1a82ba;">
+            <div id="main-load" class="spinner-border" role="status"
+                 style="width: 6rem; height: 6rem; color: #1a82ba;">
               <span class="visually-hidden">Loading...</span>
             </div>
           </div>
+
           <div style="display: none;" id="Grid-Container">
-            <div id='N-circuits' align='center'></div>
+
+            <!-- Botones de secciones -->
+            <div id='N-sections' align='center' class='mb-3'></div>
+
+            <!-- Tabla principal (siempre visible) -->
             <div id='Main-table'></div>
-            <div id='Main-content'></div>
+
+            <!-- Secciones opcionales: se insertan aquí en orden de apertura -->
+            <div id='sections-container'></div>
+
           </div>
         </div>
       </main>
     </div>
   </div>
-  <!-- Scripts de Librerias -->
+
   <script src="js/lib/dixell.js"></script>
-  <!-- Scripts de Intarcon -->
   <script src="js/scripts.js"></script>
+  <script src="js/intarcon.js"></script>
   <script src="js/status.js"></script>
 </body>
-
 </html>

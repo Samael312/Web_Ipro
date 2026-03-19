@@ -20,6 +20,14 @@ html {
   padding: 16px;
 }
 
+#Grid-Container-Zoom {
+  line-height: 0;
+}
+
+#scada-img-bg {
+  display: block;
+}
+
 .container-spinner {
   background: #eee;
   align-items: center;

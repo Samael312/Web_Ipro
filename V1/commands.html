@@ -9,7 +9,6 @@
   <link rel="icon" href="assets/logos/Logo-simple-azul.png" />
   <link href="css/boostrap.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
-  <!-- Scripts de Librerias -->
   <script src="js/lib/bootstrap.bundle.min.js"></script>
   <script src="js/lib/jquery.min.js"></script>
   <script src="js/lib/jquery-ui.js"></script>
@@ -20,18 +19,15 @@
 
 <body class="sb-nav-fixed">
   <nav class="sb-topnav navbar navbar-expand navbar-dark">
-    <!-- Logotipo -->
     <a class="ps-3 d-none d-sm-block" href="index.html">
       <img src="assets/logos/Logo-blanco.png" alt="intarLAB" style="width: 190px;" />
     </a>
     <a class="ps-3 d-block d-sm-none" href="index.html">
       <img src="assets/logos/Logo-simple-blanco.png" alt="intarLAB" style="width: 50px;" />
     </a>
-    <!-- Collapse -->
     <button class="btn btn-link btn-sm m-3" id="sidebarToggle" href="#!">
       <i style='font-size: 18; color: white;' class="fas fa-bars"></i>
     </button>
-    <!-- Navbar-->
     <div class="ms-auto">
       <div id="login-modal" class="modal">
         <div class="modal-content">
@@ -41,8 +37,7 @@
             <form id="loginForm">
               <input class="input-login" type="text" placeholder="Username" id="login-username">
               <input class="input-login" type="password" placeholder="Password" id="login-password">
-              <span style="display: none;" id="login-error" class="text-danger">
-                * Username or password incorrect</span>
+              <span style="display: none;" id="login-error" class="text-danger">* Username or password incorrect</span>
               <div id="login_form" class="login_form text-center mt-2" style="display: block;">
                 <button type="submit" class="btn btn-primary">LOGIN</button>
               </div>
@@ -51,29 +46,19 @@
         </div>
       </div>
       <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li>
-          <span class='nav-link intar-icon' style="display: none;">ALARMA//i style='color:red;
-            font-size: 25;' class="fa fa-bell"/10
-          </span>
-        </li>
-        <li>
-          <span class='nav-link intar-icon' style="display: none;">WARNING//i style='color:yellow;
-            font-size: 25;' class="fa fa-exclamation-triangle"/10
-          </span>
-        </li>
+        <li><span class='nav-link intar-icon' style="display: none;">ALARMA//i style='color:red; font-size: 25;' class="fa fa-bell"/10</span></li>
+        <li><span class='nav-link intar-icon' style="display: none;">WARNING//i style='color:yellow; font-size: 25;' class="fa fa-exclamation-triangle"/10</span></li>
         <li>&nbsp;&nbsp;&nbsp;</li>
-        <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link"
-          id="login_username"></li>
-        <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link" id="login_logout"
-          role="button" onclick="logOut()">
+        <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link" id="login_username"></li>
+        <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link" id="login_logout" role="button" onclick="logOut()">
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </li>
         <li style="color: white;font-weight: bold; font-size: large;" class="nav-link" role="button"
-          onclick="document.getElementById('login-modal').style.display='block'" id="login_button">LOGIN
-        </li>
+          onclick="document.getElementById('login-modal').style.display='block'" id="login_button">LOGIN</li>
       </ul>
     </div>
   </nav>
+
   <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
       <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -83,8 +68,7 @@
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-home"></i></div> PRINCIPAL
             </a>
             <a style="color: white;" class="nav-link" href="status.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-tachometer"></i></div>
-              ESTADO
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-tachometer"></i></div> ESTADO
             </a>
             <a style="color: white;" class="nav-link" href="alarms.html">
               <div class="sb-nav-link-icon">
@@ -93,94 +77,89 @@
               </div> ALARMAS
             </a>
             <a style="color: white;" class="nav-link" href="input-output.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-toggle-off"></i></div>
-              ENTRADAS/SALIDAS
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-toggle-off"></i></div> ENTRADAS/SALIDAS
             </a>
             <a style="color: white;" class="nav-link" href="graphs.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-area-chart"></i></div>
-              GRAFICAS
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-area-chart"></i></div> GRAFICAS
             </a>
             <a style="color: white;" class="nav-link" data-bs-toggle="collapse" data-bs-target="#collapseParameters"
               aria-expanded="false" aria-controls="collapseParameters">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-sliders"></i></div>
               PARAMETROS
-              <div class="sb-sidenav-collapse-arrow">
-                <i style="color: white;" class="fas fa-angle-down"></i>
-              </div>
+              <div class="sb-sidenav-collapse-arrow"><i style="color: white;" class="fas fa-angle-down"></i></div>
             </a>
-            <div class="collapse" id="collapseParameters" aria-labelledby="headingOne"
-              data-bs-parent="#sidenavAccordion">
+            <div class="collapse" id="collapseParameters" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
                 <a style="color: white;" class="nav-link" href="parameters.html">
-                  <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i>
-                  </div> CONFIGURACION PARAMETROS
+                  <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i></div> CONFIGURACION PARAMETROS
                 </a>
                 <a style="color: white;" class="nav-link" href="parameters-io.html">
-                  <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i>
-                  </div> CONFIGURACION E/S
+                  <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i></div> CONFIGURACION E/S
                 </a>
               </nav>
             </div>
             <a style="color: white;" class="nav-link" href="commands.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-terminal"></i></div>
-              COMANDOS
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-terminal"></i></div> COMANDOS
             </a>
             <hr>
             <a style="color: white;" class="nav-link" href="/panel/index.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-columns"></i></div>
-              PANEL DE CONTROL
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-columns"></i></div> PANEL DE CONTROL
             </a>
           </div>
         </div>
         <div class="sb-sidenav-footer">
           <div class="text-center">
-            <a href="https://www.kiconex.com" target="_blank"
-              style="text-decoration: none;color:white; font-weight: bold;">KICONEX - 2025</a>
+            <a href="https://www.kiconex.com" target="_blank" style="text-decoration: none;color:white; font-weight: bold;">KICONEX - 2025</a>
           </div>
         </div>
       </nav>
     </div>
+
     <div id="layoutSidenav_content">
       <main>
+
+        <!-- ── SPINNER ── -->
         <div class="d-flex justify-content-center row">
-          <div id="main-load" class="spinner-border m-3" role="status" style="width: 6rem; height: 6rem;color: #1a82ba;">
+          <div id="main-load" class="spinner-border m-3" role="status" style="width: 6rem; height: 6rem; color: #1a82ba;">
             <span class="visually-hidden">Loading...</span>
           </div>
         </div>
+
         <div id="commands" class="container-fluid p-3 text-center" style="display: none;">
           <div class="m-3">
+
+            <!-- ════════════════════════════════════════
+                 INFO
+            ════════════════════════════════════════ -->
             <div class="row justify-content-center">
               <h3 style='background-color: #d9daff;'>INFO</h3>
               <table class="table m-3 w-75 table-borderless" align="center">
                 <tr>
-                  <th style="width: 50%;">Program name: <span class='isavar_string' style='color:red;'>ApplicationRelease 60</span> </th>
-                  <th style="width: 50%;">Hardware version: <span class='intar-bool'>ONOFF_GEN/<span
-                        style='color:blue;'>DIN4</span>/<span style='color:red;'>DIN10</span>/10</span></th>
+                  <th style="width: 50%;">Program name: <span class='isavar_string' style='color:red;'>ApplicationRelease 60</span></th>
+                  <th style="width: 50%;">Hardware version: <span class='intar-bool'>ONOFF_GEN/<span style='color:blue;'>DIN4</span>/<span style='color:red;'>DIN10</span>/10</span></th>
                 </tr>
               </table>
             </div>
+
+            <!-- ════════════════════════════════════════
+                 ON / OFF GENERAL
+            ════════════════════════════════════════ -->
             <div class="row justify-content-center">
               <h3 style='background-color: #d9daff;'>ON / OFF</h3>
-              <!--Modal del boton ON-->
+
               <div id="on-modal" class="modal">
-                <div class="modal-content">
-                  <div class="container">
-                    <h4 class="text-center">Sistema encendido</h4>
-                    <hr />
-                    <p class="text-center">El sistema ha sido encendido!</p>
-                  </div>
-                </div>
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">Sistema encendido</h4><hr />
+                  <p class="text-center">El sistema ha sido encendido!</p>
+                </div></div>
               </div>
-              <!--Modal del boton OFF-->
               <div id="off-modal" class="modal">
-                <div class="modal-content">
-                  <div class="container">
-                    <h4 class="text-center">Sistema apagado</h4>
-                    <hr />
-                    <p class="text-center">El sistema ha sido apagado!</p>
-                  </div>
-                </div>
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">Sistema apagado</h4><hr />
+                  <p class="text-center">El sistema ha sido apagado!</p>
+                </div></div>
               </div>
+
               <div class="col-3">
                 <button class="btn alarm-button m-3 mb-4" id="on-button" onclick="commitModal(this)">POWER ON</button>
               </div>
@@ -188,138 +167,473 @@
                 <button class="btn alarm-button m-3 mb-4" id="off-button" onclick="commitModal(this)">POWER OFF</button>
               </div>
             </div>
+
+            <!-- ════════════════════════════════════════
+                 ALARMAS
+            ════════════════════════════════════════ -->
             <div class="row justify-content-center">
-              <h3 style='background-color: #d9daff;'>Gestion de Alarmas</h3>
+              <h3 style='background-color: #d9daff;'>GESTIÓN DE ALARMAS</h3>
+
+              <div id="alarm-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">RESET DE ALARMAS</h4><hr />
+                  <p class="text-center">Las alarmas fueron reseteadas</p>
+                </div></div>
+              </div>
+
               <div class="col-3">
-                <!--Modal del reset de alarmas-->
-                <div id="alarm-modal" class="modal">
-                  <div class="modal-content">
-                    <div class="container">
-                      <h4 class="text-center">RESET DE ALARMAS</h4>
-                      <hr />
-                      <p class="text-center">Las alarmas fueron reseteadas</p>
-                    </div>
-                  </div>
-                </div>
                 <button class="btn alarm-button m-3 mb-4" onclick="resetAlarm()">RESET DE ALARMAS</button>
               </div>
-              <div id="down-alarm" class="col-3">
-                <button class="btn alarm-button m-3 mb-4" onclick="downloadAlarms(checkSession())">
-                  DOWNLOAD ALARMS</button>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="downloadAlarms(checkSession())">DOWNLOAD ALARMS</button>
               </div>
-              <div id="down-warn" class="col-3">
-                <button class="btn alarm-button m-3 mb-4" onclick="downloadWarnings(checkSession())">
-                  DOWNLOAD WARNINGS</button>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="downloadWarnings(checkSession())">DOWNLOAD WARNINGS</button>
               </div>
             </div>
-            <div id="manage-param" class="row justify-content-center">
-              <h3 style='background-color: #d9daff;'>PARAMETERS FILES MANAGEMENT</h3>
-              <!--Modal de Escribir Parámetros-->
-              <div id="write-modal" class="modal">
-                <div class="modal-content">
-                  <div class="container">
-                    <h4 class="text-center">PARAMETERS MANAGEMENT</h4>
-                    <hr />
-                    <p class="text-center">Parameters writed successfully</p>
-                  </div>
-                </div>
+
+            <!-- ════════════════════════════════════════
+                 CALDERAS  (etapas 1, 2, 3)
+            ════════════════════════════════════════ -->
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>CALDERAS</h3>
+
+              <div id="caldera-on-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">CALDERA</h4><hr />
+                  <p class="text-center">Orden de encendido enviada</p>
+                </div></div>
               </div>
-              <!--Modal de Cargar Parámetros-->
-              <div id="load-modal" class="modal">
-                <div class="modal-content">
-                  <div class="container">
-                    <h4 class="text-center">PARAMETERS MANAGEMENT</h4>
-                    <hr />
-                    <p class="text-center">Parameters loaded successfully</p>
-                  </div>
-                </div>
+              <div id="caldera-off-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">CALDERA</h4><hr />
+                  <p class="text-center">Orden de apagado enviada</p>
+                </div></div>
               </div>
+              <div id="caldera-auto-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">CALDERA</h4><hr />
+                  <p class="text-center">Modo AUTO activado</p>
+                </div></div>
+              </div>
+
               <table class="table w-75 m-3" align="center">
-                <tr>
-                  <th>DEFAULT PARAMETERS</th>
-                  <td><button class="btn alarm-button" onclick="map_management('loadDefault');">Load</button></td>
-                  <td><button id="write-default" class="btn alarm-button"
-                      onclick="map_management('writeDefault');">Write</button></td>
-                </tr>
-                <tr>
-                  <th>BACKUP PARAMETERS</td>
-                  <td><button class="btn alarm-button" onclick="map_management('loadBackup');">Load</button></td>
-                  <td><button class="btn alarm-button" onclick="map_management('writeBackup');">Write</button></td>
-                </tr>
-                <tr>
-                  <th>SERVICE PARAMETERS</th>
-                  <td><button class="btn alarm-button" onclick="map_management('loadService');">Load</button></td>
-                  <td><button class="btn alarm-button" onclick="map_management('writeService');">Write</button></td>
-                </tr>
+                <thead><tr><th>Etapa</th><th>ON</th><th>OFF</th><th>AUTO</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <th>Caldera Etapa 1</th>
+                    <td><button class="btn alarm-button" onclick="cmdCalderaOn(1)">ON</button></td>
+                    <td><button class="btn alarm-button" onclick="cmdCalderaOff(1)">OFF</button></td>
+                    <td><button class="btn alarm-button" onclick="cmdCalderaAuto(1)">AUTO</button></td>
+                  </tr>
+                  <tr>
+                    <th>Caldera Etapa 2</th>
+                    <td><button class="btn alarm-button" onclick="cmdCalderaOn(2)">ON</button></td>
+                    <td><button class="btn alarm-button" onclick="cmdCalderaOff(2)">OFF</button></td>
+                    <td><button class="btn alarm-button" onclick="cmdCalderaAuto(2)">AUTO</button></td>
+                  </tr>
+                  <tr>
+                    <th>Caldera Etapa 3</th>
+                    <td><button class="btn alarm-button" onclick="cmdCalderaOn(3)">ON</button></td>
+                    <td><button class="btn alarm-button" onclick="cmdCalderaOff(3)">OFF</button></td>
+                    <td><button class="btn alarm-button" onclick="cmdCalderaAuto(3)">AUTO</button></td>
+                  </tr>
+                </tbody>
               </table>
             </div>
+
+            <!-- ════════════════════════════════════════
+                 BOMBAS G4 / G5
+            ════════════════════════════════════════ -->
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>BOMBAS G4 / G5</h3>
+
+              <div id="bomba-on-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">BOMBA</h4><hr />
+                  <p class="text-center">Orden de encendido enviada</p>
+                </div></div>
+              </div>
+              <div id="bomba-off-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">BOMBA</h4><hr />
+                  <p class="text-center">Orden de apagado enviada</p>
+                </div></div>
+              </div>
+
+              <table class="table w-75 m-3" align="center">
+                <thead><tr><th>Grupo</th><th>ON</th><th>OFF</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <th>Grupo Bomba G4</th>
+                    <td><button class="btn alarm-button" onclick="cmdBombaOn(4)">ON</button></td>
+                    <td><button class="btn alarm-button" onclick="cmdBombaOff(4)">OFF</button></td>
+                  </tr>
+                  <tr>
+                    <th>Grupo Bomba G5</th>
+                    <td><button class="btn alarm-button" onclick="cmdBombaOn(5)">ON</button></td>
+                    <td><button class="btn alarm-button" onclick="cmdBombaOff(5)">OFF</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- ════════════════════════════════════════
+                 BOMBA ACS
+            ════════════════════════════════════════ -->
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>BOMBA ACS</h3>
+
+              <div id="bomba-acs-on-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">BOMBA ACS</h4><hr />
+                  <p class="text-center">Bomba ACS encendida</p>
+                </div></div>
+              </div>
+              <div id="bomba-acs-off-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">BOMBA ACS</h4><hr />
+                  <p class="text-center">Bomba ACS apagada</p>
+                </div></div>
+              </div>
+              <div id="bomba-acs-auto-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">BOMBA ACS</h4><hr />
+                  <p class="text-center">Bomba ACS en modo AUTO</p>
+                </div></div>
+              </div>
+
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdBombaAcsOn()">ON</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdBombaAcsOff()">OFF</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdBombaAcsAuto()">AUTO</button>
+              </div>
+            </div>
+
+            <!-- ════════════════════════════════════════
+                 BOMBA DE CALOR KEYTER
+            ════════════════════════════════════════ -->
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>BOMBA DE CALOR KEYTER</h3>
+
+              <div id="bckeyter-on-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">BOMBA CALOR KEYTER</h4><hr />
+                  <p class="text-center">Bomba Keyter encendida</p>
+                </div></div>
+              </div>
+              <div id="bckeyter-off-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">BOMBA CALOR KEYTER</h4><hr />
+                  <p class="text-center">Bomba Keyter apagada</p>
+                </div></div>
+              </div>
+              <div id="bckeyter-auto-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">BOMBA CALOR KEYTER</h4><hr />
+                  <p class="text-center">Bomba Keyter en modo AUTO</p>
+                </div></div>
+              </div>
+
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdBckeyterOn()">ON</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdBckeyterOff()">OFF</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdBckeyterAuto()">AUTO</button>
+              </div>
+            </div>
+
+            <!-- ════════════════════════════════════════
+                 INTARCON GRANDE
+            ════════════════════════════════════════ -->
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>INTARCON GRANDE</h3>
+
+              <div id="intar-big-on-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">INTARCON GRANDE</h4><hr />
+                  <p class="text-center">Intarcon Grande encendido</p>
+                </div></div>
+              </div>
+              <div id="intar-big-off-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">INTARCON GRANDE</h4><hr />
+                  <p class="text-center">Intarcon Grande apagado</p>
+                </div></div>
+              </div>
+
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdIntarBigOn()">ON</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdIntarBigOff()">OFF</button>
+              </div>
+            </div>
+
+            <!-- ════════════════════════════════════════
+                 INTARCON PEQUEÑA
+            ════════════════════════════════════════ -->
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>INTARCON PEQUEÑA</h3>
+
+              <div id="intar-small-on-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">INTARCON PEQUEÑA</h4><hr />
+                  <p class="text-center">Intarcon Pequeña encendida</p>
+                </div></div>
+              </div>
+              <div id="intar-small-off-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">INTARCON PEQUEÑA</h4><hr />
+                  <p class="text-center">Intarcon Pequeña apagada</p>
+                </div></div>
+              </div>
+              <div id="intar-small-auto-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">INTARCON PEQUEÑA</h4><hr />
+                  <p class="text-center">Intarcon Pequeña en modo AUTO</p>
+                </div></div>
+              </div>
+
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdIntarSmallOn()">ON</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdIntarSmallOff()">OFF</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdIntarSmallAuto()">AUTO</button>
+              </div>
+            </div>
+
+            <!-- ════════════════════════════════════════
+                 VÁLVULA RECUPERACIÓN (V3V)
+            ════════════════════════════════════════ -->
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>VÁLVULA RECUPERACIÓN (V3V)</h3>
+
+              <div id="v3v-on-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">V3V RECUPERACIÓN</h4><hr />
+                  <p class="text-center">Válvula activada</p>
+                </div></div>
+              </div>
+              <div id="v3v-off-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">V3V RECUPERACIÓN</h4><hr />
+                  <p class="text-center">Válvula desactivada</p>
+                </div></div>
+              </div>
+              <div id="v3v-auto-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">V3V RECUPERACIÓN</h4><hr />
+                  <p class="text-center">Válvula en modo AUTO</p>
+                </div></div>
+              </div>
+
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdV3vOn()">ON</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdV3vOff()">OFF</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdV3vAuto()">AUTO</button>
+              </div>
+            </div>
+
+            <!-- ════════════════════════════════════════
+                 RESISTENCIA DEPÓSITO RECUPERACIÓN
+            ════════════════════════════════════════ -->
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>RESISTENCIA DEPÓSITO RECUPERACIÓN</h3>
+
+              <div id="heater-on-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">RESISTENCIA DEPÓSITO</h4><hr />
+                  <p class="text-center">Resistencia encendida</p>
+                </div></div>
+              </div>
+              <div id="heater-off-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">RESISTENCIA DEPÓSITO</h4><hr />
+                  <p class="text-center">Resistencia apagada</p>
+                </div></div>
+              </div>
+              <div id="heater-auto-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">RESISTENCIA DEPÓSITO</h4><hr />
+                  <p class="text-center">Resistencia en modo AUTO</p>
+                </div></div>
+              </div>
+
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdHeaterOn()">ON</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdHeaterOff()">OFF</button>
+              </div>
+              <div class="col-3">
+                <button class="btn alarm-button m-3 mb-4" onclick="cmdHeaterAuto()">AUTO</button>
+              </div>
+            </div>
+
+            <!-- ════════════════════════════════════════
+                 CONTADORES
+            ════════════════════════════════════════ -->
+            <div class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>RESET CONTADORES</h3>
+
+              <div id="contador-reset-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">RESET CONTADOR</h4><hr />
+                  <p class="text-center">Contador reseteado correctamente</p>
+                </div></div>
+              </div>
+
+              <table class="table w-75 m-3" align="center">
+                <thead><tr><th>Contador</th><th>Reset individual</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <th>Contador 1 — Glicol Frío</th>
+                    <td><button class="btn alarm-button" onclick="cmdResetContador(1)">RESET C1</button></td>
+                  </tr>
+                  <tr>
+                    <th>Contador 2</th>
+                    <td><button class="btn alarm-button" onclick="cmdResetContador(2)">RESET C2</button></td>
+                  </tr>
+                  <tr>
+                    <th>Contador 3</th>
+                    <td><button class="btn alarm-button" onclick="cmdResetContador(3)">RESET C3</button></td>
+                  </tr>
+                  <tr>
+                    <th>Contador 4</th>
+                    <td><button class="btn alarm-button" onclick="cmdResetContador(4)">RESET C4</button></td>
+                  </tr>
+                  <tr>
+                    <th>Contador 5 — Gasóleo</th>
+                    <td><button class="btn alarm-button" onclick="cmdResetContador(5)">RESET C5</button></td>
+                  </tr>
+                  <tr>
+                    <th>Contador 6</th>
+                    <td><button class="btn alarm-button" onclick="cmdResetContador(6)">RESET C6</button></td>
+                  </tr>
+                  <tr>
+                    <th><strong>RESET GLOBAL TODOS LOS CONTADORES</strong></th>
+                    <td><button class="btn alarm-button" onclick="cmdResetAllContadores()">RESET ALL</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- ════════════════════════════════════════
+                 PARAMETERS FILES MANAGEMENT
+            ════════════════════════════════════════ -->
+            <div id="manage-param" class="row justify-content-center">
+              <h3 style='background-color: #d9daff;'>PARAMETERS FILES MANAGEMENT</h3>
+
+              <div id="write-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">PARAMETERS MANAGEMENT</h4><hr />
+                  <p class="text-center">Parameters written successfully</p>
+                </div></div>
+              </div>
+              <div id="load-modal" class="modal">
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">PARAMETERS MANAGEMENT</h4><hr />
+                  <p class="text-center">Parameters loaded successfully</p>
+                </div></div>
+              </div>
+
+              <table class="table w-75 m-3" align="center">
+                <thead><tr><th>Fichero</th><th>Load</th><th>Write</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <th>DEFAULT PARAMETERS</th>
+                    <td><button class="btn alarm-button" onclick="mapManagement('loadDefault')">Load</button></td>
+                    <td><button class="btn alarm-button" onclick="mapManagement('writeDefault')">Write</button></td>
+                  </tr>
+                  <tr>
+                    <th>BACKUP PARAMETERS</th>
+                    <td><button class="btn alarm-button" onclick="mapManagement('loadBackup')">Load</button></td>
+                    <td><button class="btn alarm-button" onclick="mapManagement('writeBackup')">Write</button></td>
+                  </tr>
+                  <tr>
+                    <th>SERVICE PARAMETERS</th>
+                    <td><button class="btn alarm-button" onclick="mapManagement('loadService')">Load</button></td>
+                    <td><button class="btn alarm-button" onclick="mapManagement('writeService')">Write</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- ════════════════════════════════════════
+                 LOG FILES MANAGEMENT
+            ════════════════════════════════════════ -->
             <div id="manage-log" class="row justify-content-center">
               <h3 style='background-color: #d9daff;'>LOG FILES MANAGEMENT</h3>
-              <!--Modal del LOG-->
+
               <div id="log-modal" class="modal">
-                <div class="modal-content">
-                  <div class="container">
-                    <h4 class="text-center">ERASE LOG</h4>
-                    <hr />
-                    <p class="text-center">Log erased successfully</p>
-                  </div>
-                </div>
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">ERASE LOG</h4><hr />
+                  <p class="text-center">Log erased successfully</p>
+                </div></div>
               </div>
+
               <table class="table w-75 m-3" align="center">
                 <tr>
                   <th>ERASE ALARM LOG FILE</th>
-                  <td>
-                    <div onclick="log_alert()"> <span class="isamod_boolwrt">RESET_DATALOG_ALARMS TRUE ERASE</span>
-                    </div>
-                  </td>
+                  <td><div onclick="logAlert()"><span class="isamod_boolwrt">RESET_DATALOG_ALARMS TRUE ERASE</span></div></td>
                 </tr>
                 <tr>
                   <th>ERASE DATALOG FILES</th>
-                  <td>
-                    <div onclick="log_alert()"> <span class="isamod_boolwrt">reset_log TRUE ERASE</span> </div>
-                  </td>
+                  <td><div onclick="logAlert()"><span class="isamod_boolwrt">reset_log TRUE ERASE</span></div></td>
                 </tr>
               </table>
             </div>
-            <div id='simulator' class="row justify-content-center">
+
+            <!-- ════════════════════════════════════════
+                 SIMULATOR MODE
+            ════════════════════════════════════════ -->
+            <div id="simulator" class="row justify-content-center">
               <h3 style='background-color: #d9daff;'>SIMULATOR MODE</h3>
-              <!--Modal del Simulador-->
+
               <div id="simulator-modal" class="modal">
-                <div class="modal-content">
-                  <div class="container">
-                    <h4 class="text-center">SIMULATOR</h4>
-                    <hr />
-                    <p class="text-center">Changed successfully</p>
-                  </div>
-                </div>
+                <div class="modal-content"><div class="container">
+                  <h4 class="text-center">SIMULATOR</h4><hr />
+                  <p class="text-center">Changed successfully</p>
+                </div></div>
               </div>
+
               <table class="table w-75 m-3" align="center">
                 <tr>
-                  <th>SIMULATOR MODE (STATUS: <span class='isavar_bool' style='color:blue;'>SIMULADOR "ON" "OFF" 10</span>) </th>
+                  <th>SIMULATOR MODE (STATUS: <span class='isavar_bool' style='color:blue;'>SIMULADOR "ON" "OFF" 10</span>)</th>
                   <td>
-                    <div id="parameters" onclick="simulator_alert()">
-                      <span class="isamod_boolwrt">SIMULADOR TRUE ON</span>
-                    </div>
+                    <div onclick="simulatorAlert()"><span class="isamod_boolwrt">SIMULADOR TRUE ON</span></div>
                   </td>
                   <td>
-                    <div id="parameters" onclick="simulator_alert()">
-                      <span class="isamod_boolwrt">SIMULADOR FALSE OFF</span>
-                    </div>
+                    <div onclick="simulatorAlert()"><span class="isamod_boolwrt">SIMULADOR FALSE OFF</span></div>
                   </td>
                 </tr>
               </table>
             </div>
-          </div>
-        </div>
+
+          </div><!-- /m-3 -->
+        </div><!-- /commands -->
       </main>
     </div>
   </div>
-  <!-- Scripts de Librerias -->
+
   <script src="js/lib/dixell.js"></script>
-  <!-- Scripts de Intarcon -->
   <script src="js/scripts.js"></script>
   <script src="js/intarcon.js"></script>
   <script src="js/comands.js"></script>
 </body>
-
 </html>

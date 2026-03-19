@@ -9,7 +9,6 @@
   <link rel="icon" href="assets/logos/Logo-simple-azul.png" />
   <link href="css/boostrap.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
-  <!-- Scripts de Librerias -->
   <script src="js/lib/bootstrap.bundle.min.js"></script>
   <script src="js/lib/jquery.min.js"></script>
   <script src="js/lib/jquery-ui.js"></script>
@@ -20,18 +19,15 @@
 
 <body class="sb-nav-fixed">
   <nav class="sb-topnav navbar navbar-expand navbar-dark">
-    <!-- Logotipo -->
     <a class="ps-3 d-none d-sm-block" href="index.html">
       <img src="assets/logos/Logo-blanco.png" alt="intarLAB" style="width: 190px;" />
     </a>
     <a class="ps-3 d-block d-sm-none" href="index.html">
       <img src="assets/logos/Logo-simple-blanco.png" alt="intarLAB" style="width: 50px;" />
     </a>
-    <!-- Collapse -->
     <button class="btn btn-link btn-sm m-3" id="sidebarToggle" href="#!">
       <i style='font-size: 18; color: white;' class="fas fa-bars"></i>
     </button>
-    <!-- Navbar-->
     <div class="ms-auto">
       <div id="login-modal" class="modal">
         <div class="modal-content">
@@ -74,6 +70,7 @@
       </ul>
     </div>
   </nav>
+
   <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
       <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -96,10 +93,15 @@
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-toggle-off"></i></div>
               ENTRADAS/SALIDAS
             </a>
+
+            <!-- GRÁFICAS — comentado temporalmente
             <a style="color: white;" class="nav-link" href="graphs.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-area-chart"></i></div>
               GRAFICAS
             </a>
+            -->
+
+            <!-- PARÁMETROS — comentado temporalmente
             <a style="color: white;" class="nav-link" data-bs-toggle="collapse" data-bs-target="#collapseParameters"
               aria-expanded="false" aria-controls="collapseParameters">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-sliders"></i></div>
@@ -121,10 +123,15 @@
                 </a>
               </nav>
             </div>
+            -->
+
+            <!-- COMANDOS — comentado temporalmente
             <a style="color: white;" class="nav-link" href="commands.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-terminal"></i></div>
               COMANDOS
             </a>
+            -->
+
             <hr>
             <a style="color: white;" class="nav-link" href="/panel/index.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-columns"></i></div>
@@ -148,15 +155,13 @@
               <span class="visually-hidden">Loading...</span>
             </div>
           </div>
-          <!--A partir de aqui se van generando automaticamente los circuitos que haya en funcion de la topologia-->
           <div style="display: none;" class="row" id="Grid-Container"></div>
         </div>
       </main>
     </div>
   </div>
-  <!-- Scripts de Librerias -->
+
   <script src="js/lib/dixell.js"></script>
-  <!-- Scripts de Intarcon -->
   <script src="js/scripts.js"></script>
   <script src="js/main.js"></script>
 </body>

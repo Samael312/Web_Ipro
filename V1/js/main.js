@@ -30,7 +30,7 @@ $(document).ready(function () {
     timeout: 5000,
     success: function (data) {
       caudalVariable = data[0].value;
-      main_table(true); 
+      main_table(true);
     },
     error: function () {
       console.warn("No se pudieron obtener los datos iniciales o se agotó el tiempo de espera.");
@@ -82,7 +82,7 @@ function resetearZoom() {
 function aplicarZoom() {
   let grid = document.getElementById('Grid-Container-Zoom');
   if (grid) {
-    grid.style.zoom = currentZoom; 
+    grid.style.zoom = currentZoom;
   }
 }
 
@@ -114,45 +114,48 @@ function toggleFabMenu() {
 function toggleModoEdicion(activar) {
   if (activar) {
     $('#Grid-Container-Zoom').addClass('edit-mode-active');
-    
-    // 1. DRAG
+
+    // 1. DRAG — referenciado a la imagen, no al padre genérico
     $('.var-editable').draggable({
-      start: function(event, ui) { $(this).css('z-index', 100); },
-      stop: function(event, ui) {
-        $(this).css('z-index', ''); 
-        var parentWidth = ui.helper.parent().width();
-        var parentHeight = ui.helper.parent().height();
-        var newLeftPercent = (ui.position.left / parentWidth) * 100;
-        var newTopPercent = (ui.position.top / parentHeight) * 100;
+      start: function (event, ui) {
+        $(this).css('z-index', 100);
+      },
+      stop: function (event, ui) {
+        $(this).css('z-index', '');
+
+        // FIX: usar la imagen como referencia para los % → independiente de resolución
+        var img = document.getElementById('scada-img-bg');
+        var newLeftPercent = (ui.position.left / img.offsetWidth) * 100;
+        var newTopPercent  = (ui.position.top  / img.offsetHeight) * 100;
 
         ui.helper.css({
-          left: newLeftPercent.toFixed(2) + "%",
-          top: newTopPercent.toFixed(2) + "%"
+          left: newLeftPercent.toFixed(2) + '%',
+          top:  newTopPercent.toFixed(2)  + '%'
         });
       }
     });
 
-    // 2. RESIZE
+    // 2. RESIZE — referenciado a la imagen
     $('.var-editable').resizable({
       containment: "parent",
       handles: "se",
-      resize: function(event, ui) {
+      resize: function (event, ui) {
         var newHeight = ui.size.height;
         $(this).css('font-size', (newHeight * 0.5) + 'px');
       },
-      stop: function(event, ui) {
-        var parentWidth = ui.helper.parent().width();
-        var parentHeight = ui.helper.parent().height();
-        var newWidthPercent = (ui.size.width / parentWidth) * 100;
-        var newHeightPercent = (ui.size.height / parentHeight) * 100;
-        
+      stop: function (event, ui) {
+        // FIX: usar la imagen como referencia para los % → independiente de resolución
+        var img = document.getElementById('scada-img-bg');
+        var newWidthPercent  = (ui.size.width  / img.offsetWidth)  * 100;
+        var newHeightPercent = (ui.size.height / img.offsetHeight) * 100;
+
         var currentFontSizePx = parseFloat($(this).css('font-size'));
         var fontSizeVh = (currentFontSizePx / window.innerHeight) * 100;
-        
+
         ui.helper.css({
-          width: newWidthPercent.toFixed(2) + "%",
-          height: newHeightPercent.toFixed(2) + "%",
-          fontSize: fontSizeVh.toFixed(3) + "vh"
+          width:    newWidthPercent.toFixed(2)  + '%',
+          height:   newHeightPercent.toFixed(2) + '%',
+          fontSize: fontSizeVh.toFixed(3) + 'vh'
         });
       }
     });
@@ -167,23 +170,23 @@ function toggleModoEdicion(activar) {
 }
 
 let isEditMode = false;
-let posicionesAntes = null; // Snapshot antes de editar
+let posicionesAntes = null;
 
 function toggleEditState() {
   isEditMode = !isEditMode;
-  
+
   if (isEditMode) {
     resetearZoom();
-    // Guardamos snapshot del estado actual ANTES de editar
+    // Snapshot del estado ANTES de editar (para poder cancelar)
     posicionesAntes = {};
-    $('.var-editable').each(function() {
+    $('.var-editable').each(function () {
       let id = $(this).attr('data-id');
       if (id) {
         posicionesAntes[id] = {
-          top: $(this)[0].style.top,
-          left: $(this)[0].style.left,
-          width: $(this)[0].style.width,
-          height: $(this)[0].style.height,
+          top:      $(this)[0].style.top,
+          left:     $(this)[0].style.left,
+          width:    $(this)[0].style.width,
+          height:   $(this)[0].style.height,
           fontSize: $(this)[0].style.fontSize
         };
       }
@@ -191,7 +194,7 @@ function toggleEditState() {
   }
 
   toggleModoEdicion(isEditMode);
-  
+
   let btn = document.getElementById('btn-editar');
   let btnCancelar = document.getElementById('btn-cancelar-editar');
   if (isEditMode) {
@@ -211,16 +214,16 @@ function cancelarEdicion() {
   if (!isEditMode) return;
   isEditMode = false;
 
-  // Restauramos las posiciones anteriores al editar
+  // Restaurar posiciones del snapshot previo a la edición
   if (posicionesAntes) {
-    $('.var-editable').each(function() {
+    $('.var-editable').each(function () {
       let id = $(this).attr('data-id');
       if (id && posicionesAntes[id]) {
         $(this).css({
-          top: posicionesAntes[id].top,
-          left: posicionesAntes[id].left,
-          width: posicionesAntes[id].width || '',
-          height: posicionesAntes[id].height || '',
+          top:      posicionesAntes[id].top,
+          left:     posicionesAntes[id].left,
+          width:    posicionesAntes[id].width    || '',
+          height:   posicionesAntes[id].height   || '',
           fontSize: posicionesAntes[id].fontSize || ''
         });
       }
@@ -240,15 +243,16 @@ function cancelarEdicion() {
 
 function guardarPosiciones() {
   let posiciones = {};
-  $('.var-editable').each(function() {
+  $('.var-editable').each(function () {
     let id = $(this).attr('data-id');
     if (id) {
+      // Los valores ya están en % gracias al fix del drag/resize
       posiciones[id] = {
-        top: $(this)[0].style.top,
-        left: $(this)[0].style.left,
-        width: $(this)[0].style.width,
-        height: $(this)[0].style.height,
-        fontSize: $(this)[0].style.fontSize 
+        top:      this.style.top      || '',
+        left:     this.style.left     || '',
+        width:    this.style.width    || '',
+        height:   this.style.height   || '',
+        fontSize: this.style.fontSize || ''
       };
     }
   });
@@ -257,20 +261,42 @@ function guardarPosiciones() {
 
 function aplicarPosicionesGuardadas() {
   let layoutGuardado = localStorage.getItem('scada_layout_config');
-  if (layoutGuardado) {
-    let posiciones = JSON.parse(layoutGuardado);
-    $('.var-editable').each(function() {
+  if (!layoutGuardado) return;
+
+  let posiciones = JSON.parse(layoutGuardado);
+
+  // FIX: esperar a que la imagen esté cargada para tener offsetWidth/Height correctos
+  var img = document.getElementById('scada-img-bg');
+
+  function aplicar() {
+    $('.var-editable').each(function () {
       let id = $(this).attr('data-id');
-      if (id && posiciones[id]) {
-        $(this).css({
-          top: posiciones[id].top,
-          left: posiciones[id].left,
-          width: posiciones[id].width || '', 
-          height: posiciones[id].height || '', 
-          fontSize: posiciones[id].fontSize || ''
-        });
+      if (!id || !posiciones[id]) return;
+
+      let p = posiciones[id];
+
+      // FIX: migrar valores en px a % por si hay layouts guardados con versiones anteriores
+      function toPercent(val, base) {
+        if (!val || val === '') return '';
+        if (val.endsWith('%')) return val;            // ya es %, se aplica directo
+        return ((parseFloat(val) / base) * 100).toFixed(2) + '%'; // convierte px → %
       }
+
+      $(this).css({
+        top:      toPercent(p.top,    img.offsetHeight),
+        left:     toPercent(p.left,   img.offsetWidth),
+        width:    p.width    ? toPercent(p.width,  img.offsetWidth)  : '',
+        height:   p.height   ? toPercent(p.height, img.offsetHeight) : '',
+        fontSize: p.fontSize || ''
+      });
     });
+  }
+
+  // Si la imagen ya está cargada aplicar directo, si no esperar al evento load
+  if (img.complete && img.naturalWidth > 0) {
+    aplicar();
+  } else {
+    img.addEventListener('load', aplicar, { once: true });
   }
 }
 
@@ -288,29 +314,27 @@ function habilitarArrastreFondo() {
     e.preventDefault();
     isDown = true;
     viewport.classList.add('dragging');
-    
+
     startX = e.pageX - viewport.offsetLeft;
     startY = e.pageY - viewport.offsetTop;
     scrollLeft = viewport.scrollLeft;
-    scrollTop = viewport.scrollTop;
+    scrollTop  = viewport.scrollTop;
   });
 
-  window.addEventListener('mouseup', () => { 
-    isDown = false; 
-    if(viewport) viewport.classList.remove('dragging');
+  window.addEventListener('mouseup', () => {
+    isDown = false;
+    if (viewport) viewport.classList.remove('dragging');
   });
-  
+
   viewport.addEventListener('mousemove', (e) => {
     if (!isDown) return;
-    e.preventDefault(); 
-    
+    e.preventDefault();
+
     const x = e.pageX - viewport.offsetLeft;
     const y = e.pageY - viewport.offsetTop;
-    const walkX = (x - startX);
-    const walkY = (y - startY);
-    
-    viewport.scrollLeft = scrollLeft - walkX;
-    viewport.scrollTop = scrollTop - walkY;
+
+    viewport.scrollLeft = scrollLeft - (x - startX);
+    viewport.scrollTop  = scrollTop  - (y - startY);
   });
 }
 
@@ -319,17 +343,17 @@ function main_table(hasData) {
   var html = `
     <style>
       #Scada-App-Root {
-          position: relative;
-          width: 100%;
-          height: calc(100vh - 105px);
-          background-color: #f4f6f8;
-          border-radius: 8px;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-        }
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 105px);
+        background-color: #f4f6f8;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
 
       .fab-container {
         position: absolute;
@@ -384,7 +408,7 @@ function main_table(hasData) {
         text-align: center;
       }
       .fab-menu button:hover { background: #e5e7eb; }
-      
+
       #btn-editar.editing { background: #000; color: #fff; border-color: #000; }
       #btn-cancelar-editar { background: #f3f4f6; color: #c0392b; border-color: #c0392b; display: none; }
       #btn-cancelar-editar:hover { background: #fdecea; }
@@ -393,8 +417,8 @@ function main_table(hasData) {
         width: 100%;
         height: 100%;
         position: relative;
-        overflow: auto; 
-        cursor: grab; 
+        overflow: auto;
+        cursor: grab;
         text-align: center;
         white-space: nowrap;
       }
@@ -406,17 +430,18 @@ function main_table(hasData) {
         vertical-align: middle;
       }
 
-      #Scada-Viewport.dragging {
-        cursor: grabbing; 
-      }
+      #Scada-Viewport.dragging { cursor: grabbing; }
 
+      /* FIX: line-height:0 elimina el espacio fantasma bajo la imagen en inline-block */
       #Grid-Container-Zoom {
-        position: relative; 
-        display: inline-block; 
+        position: relative;
+        display: inline-block;
         vertical-align: middle;
         white-space: normal;
+        line-height: 0;
       }
 
+      /* FIX: display:block en la imagen para que el contenedor tenga exactamente su tamaño */
       #scada-img-bg {
         height: calc(100vh - 105px);
         width: auto;
@@ -425,19 +450,19 @@ function main_table(hasData) {
       }
 
       .scada-badge {
-        background: transparent; 
-        border: 1px solid transparent; 
-        padding: 4px 8px; 
-        border-radius: 3px; 
+        background: transparent;
+        border: 1px solid transparent;
+        padding: 4px 8px;
+        border-radius: 3px;
         font-family: 'Arial', sans-serif;
-        font-size: 11px; 
+        font-size: 11px;
         font-weight: bold;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        box-sizing: border-box; 
-        overflow: hidden; 
+        box-sizing: border-box;
+        overflow: hidden;
       }
       .scada-badge:hover { z-index: 50; }
 
@@ -459,20 +484,20 @@ function main_table(hasData) {
         height: 100% !important;
         max-width: 100%;
         max-height: 100%;
-        object-fit: contain; 
+        object-fit: contain;
       }
 
       .intar-decimal, .intar-display {
-        color: #000000; 
+        color: #000000;
         text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
       }
 
-      .scada-error { 
-        background: #ffffff; 
-        color: #bd0202; 
+      .scada-error {
+        background: #ffffff;
+        color: #bd0202;
         padding: 2px 6px;
         border-radius: 2px;
-        text-shadow: none; 
+        text-shadow: none;
         width: 100%;
         height: 100%;
         display: flex;
@@ -505,38 +530,36 @@ function main_table(hasData) {
         transform: translate(-50%, -50%);
         color: rgba(0, 0, 0, 0.25);
         font-weight: bold;
-        font-family: monospace; 
+        font-family: monospace;
         font-size: clamp(11px, 1.2vw, 16px);
         pointer-events: none;
         z-index: 1 !important;
         white-space: nowrap;
       }
 
-      .edit-mode-active .scada-badge::after {
-        display: none !important;
-      }
+      .edit-mode-active .scada-badge::after { display: none !important; }
 
-      .ui-resizable-handle { 
-        position: absolute !important; 
-        display: block !important; 
-        font-size: 0.1px; 
-        touch-action: none; 
-        z-index: 100 !important; 
+      .ui-resizable-handle {
+        position: absolute !important;
+        display: block !important;
+        font-size: 0.1px;
+        touch-action: none;
+        z-index: 100 !important;
       }
-      .ui-resizable-se { 
-        cursor: se-resize !important; 
-        width: 12px !important; 
-        height: 12px !important; 
-        right: 0px !important; 
-        bottom: 0px !important; 
-        background: #000 !important; 
-        opacity: 0.4 !important; 
+      .ui-resizable-se {
+        cursor: se-resize !important;
+        width: 12px !important;
+        height: 12px !important;
+        right: 0px !important;
+        bottom: 0px !important;
+        background: #000 !important;
+        opacity: 0.4 !important;
       }
       .edit-mode-active .ui-resizable-se:hover { opacity: 0.8 !important; }
     </style>
 
     <div id="Scada-App-Root">
-      
+
       <div class="fab-container">
         <button id="fab-main-btn" class="fab-main" onclick="toggleFabMenu()" title="Opciones">+</button>
         <div id="fab-menu-items" class="fab-menu">
@@ -553,26 +576,26 @@ function main_table(hasData) {
       <div id="Scada-Viewport">
         <div id="Grid-Container-Zoom">
           <img id="scada-img-bg" src="layout01.png" alt="Mapa de la planta">
-          
+
           <div class="var-editable scada-badge" data-id="Pb_T_S1" style="position:absolute; top:6.2%; left:41%;">
             ${getSensorHtml(hasData, 'Pb_T_S1/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S2" style="position:absolute; top:47%; left:34%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S2" style="position:absolute; top:47%; left:40%;">
             ${getSensorHtml(hasData, 'Pb_T_S2/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S3" style="position:absolute; top:30%; left:72%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S3" style="position:absolute; top:35%; left:78%;">
             ${getSensorHtml(hasData, 'Pb_T_S3/10/0/1/5/ºC')}
           </div>
           <div class="var-editable scada-badge" data-id="Pb_T_S4" style="position:absolute; top:4%; left:41%;">
             ${getSensorHtml(hasData, 'Pb_T_S4/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S5" style="position:absolute; top:32%; left:6.5%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S5" style="position:absolute; top:35%; left:10%;">
             ${getSensorHtml(hasData, 'Pb_T_S5/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S6" style="position:absolute; top:54.5%; left:25%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S6" style="position:absolute; top:54.5%; left:27.5%;">
             ${getSensorHtml(hasData, 'Pb_T_S6/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S7" style="position:absolute; top:6.5%; left:6.5%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S7" style="position:absolute; top:11%; left:9%;">
             ${getSensorHtml(hasData, 'Pb_T_S7/10/0/1/5/ºC')}
           </div>
           <div class="var-editable scada-badge" data-id="Pb_T_S14" style="position:absolute; top:6.2%; left:71%;">
@@ -584,31 +607,31 @@ function main_table(hasData) {
           <div class="var-editable scada-badge" data-id="Pb_T_S24" style="position:absolute; top:25%; left:92%;">
             ${getSensorHtml(hasData, 'Pb_T_S24/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S24_2" style="position:absolute; top:61%; left:9%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S24_2" style="position:absolute; top:61%; left:9.7%;">
             ${getSensorHtml(hasData, 'Pb_T_S24/10/0/1/5/ºC')}
           </div>
           <div class="var-editable scada-badge" data-id="Pb_T_S25" style="position:absolute; top:27%; left:92%;">
             ${getSensorHtml(hasData, 'Pb_T_S25/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S26" style="position:absolute; top:59%; left:9%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S26" style="position:absolute; top:59.2%; left:9.7%;">
             ${getSensorHtml(hasData, 'Pb_T_S26/10/0/1/5/ºC')}
           </div>
           <div class="var-editable scada-badge" data-id="Pb_T_S27" style="position:absolute; top:7.5%; left:89.5%;">
             ${getSensorHtml(hasData, 'Pb_T_S27/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_P_S16" style="position:absolute; top:52%; left:40%;">
+          <div class="var-editable scada-badge" data-id="Pb_P_S16" style="position:absolute; top:55%; left:45.3%;">
             ${getSensorHtml(hasData, 'Pb_P_S16/10/0/1/5/bar')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_P_S17" style="position:absolute; top:36%; left:47%;">
+          <div class="var-editable scada-badge" data-id="Pb_P_S17" style="position:absolute; top:38%; left:46%;">
             ${getSensorHtml(hasData, 'Pb_P_S17/10/0/1/5/bar')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_P_S21" style="position:absolute; top:51%; left:59%;">
+          <div class="var-editable scada-badge" data-id="Pb_P_S21" style="position:absolute; top:53%; left:62.5%;">
             ${getSensorHtml(hasData, 'Pb_P_S21/10/0/1/5/bar')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_P_S22" style="position:absolute; top:68%; left:89%;">
+          <div class="var-editable scada-badge" data-id="Pb_P_S22" style="position:absolute; top:67%; left:87.5%;">
             ${getSensorHtml(hasData, 'Pb_P_S22/10/0/1/5/bar')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_P_S23" style="position:absolute; top:59%; left:74%;">
+          <div class="var-editable scada-badge" data-id="Pb_P_S23" style="position:absolute; top:54.5%; left:74%;">
             ${getSensorHtml(hasData, 'Pb_P_S23/10/0/1/5/bar')}
           </div>
           <div class="var-editable scada-badge" data-id="PAR_CONSIGNA_FRIO" style="position:absolute; top:8.8%; left:41%;">
@@ -623,51 +646,67 @@ function main_table(hasData) {
           <div class="var-editable scada-badge" data-id="PAR_CONSIGNA_CALOR_2" style="position:absolute; top:63%; left:10%;">
             ${getSensorHtml(hasData, 'PAR_CONSIGNA_CALOR/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_BOMBAS_G1" style="position:absolute; top:41.5%; left:52%;">
-            ${getDisplayHtml(hasData, 'RL_BOMBAS_G1|assets/img/stop.png|assets/img/play.png|15/10/5')}
+          <div class="var-editable scada-badge" data-id="RL_BOMBAS_G1" style="position:absolute; top:40.5%; left:51%;">
+            ${getDisplayHtml(hasData, 'RL_BOMBAS_G1|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_BOMBAS_G3" style="position:absolute; top:37%; left:36%;">
-            ${getDisplayHtml(hasData, 'RL_BOMBAS_G3|assets/img/stop.png|assets/img/play.png|15/10/5')}
+          <div class="var-editable scada-badge" data-id="RL_BOMBAS_G3" style="position:absolute; top:37%; left:35.5%;">
+            ${getDisplayHtml(hasData, 'RL_BOMBAS_G3|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_BOMBAS_G4" style="position:absolute; top:44%; left:80.7%;">
-            ${getDisplayHtml(hasData, 'RL_BOMBAS_G4|assets/img/stop.png|assets/img/play.png|15/10/5')}
+          <div class="var-editable scada-badge" data-id="RL_BOMBAS_G4" style="position:absolute; top:43%; left:80%;">
+            ${getDisplayHtml(hasData, 'RL_BOMBAS_G4|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_BOMBAS_G5" style="position:absolute; top:56.5%; left:83%; transform: rotate(90deg);">
-            ${getDisplayHtml(hasData, 'RL_BOMBAS_G5|assets/img/stop.png|assets/img/play.png|15/10/5')}
+          <div class="var-editable scada-badge" data-id="RL_BOMBAS_G5" style="position:absolute; top:56%; left:82.8%; transform: rotate(90deg);">
+            ${getDisplayHtml(hasData, 'RL_BOMBAS_G5|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_BOMBA_G6" style="position:absolute; top:23%; left:7.5%;">
-            ${getDisplayHtml(hasData, 'RL_BOMBA_G6|assets/img/stop.png|assets/img/play.png|15/10/5')}
+          <div class="var-editable scada-badge" data-id="RL_BOMBA_G6" style="position:absolute; top:23%; left:6.5%;">
+            ${getDisplayHtml(hasData, 'RL_BOMBA_G6|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_ENABLE_INTAR_BIG" style="position:absolute; top:20%; left: 62%;">
-            ${getDisplayHtml(hasData, 'RL_ENABLE_INTAR_BIG|assets/img/stop.png|assets/img/play.png|15/10/5')}
+          <div class="var-editable scada-badge" data-id="RL_ENABLE_INTAR_BIG" style="position:absolute; top:20%; left:62%;">
+            ${getDisplayHtml(hasData, 'RL_ENABLE_INTAR_BIG|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
           <div class="var-editable scada-badge" data-id="RL_ENABLE_INTAR_SMALL" style="position:absolute; top:20%; left:34%;">
-            ${getDisplayHtml(hasData, 'RL_ENABLE_INTAR_SMALL|assets/img/stop.png|assets/img/play.png|15/10/5')}
+            ${getDisplayHtml(hasData, 'RL_ENABLE_INTAR_SMALL|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
           <div class="var-editable scada-badge" data-id="RL_ENABLE_BDC_KEYTER" style="position:absolute; top:42%; left:90%;">
-            ${getDisplayHtml(hasData, 'RL_ENABLE_BDC_KEYTER|assets/img/stop.png|assets/img/play.png|15/10/5')}
+            ${getDisplayHtml(hasData, 'RL_ENABLE_BDC_KEYTER|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
           <div class="var-editable scada-badge" data-id="RL_ELECT_HEATER_REC" style="position:absolute; top:42%; left:71.5%;">
-            ${getDisplayHtml(hasData, 'RL_ELECT_HEATER_REC|assets/img/resistencia_OFF.png|assets/img/resistencia_ON.png|15/10/5')}
+            ${getDisplayHtml(hasData, 'RL_ELECT_HEATER_REC|assets/img/resistencia_OFF.png|assets/img/resistencia_ON.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C1" style="position:absolute; top:86.5%; left:46%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C1" style="position:absolute; top:86.5%; left:45.2%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_1/10/0/1/5/lt')}
           </div>
           <div class="var-editable scada-badge" data-id="ST_LITROS_C2" style="position:absolute; top:83%; left:4.5%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_2/10/0/1/5/lt')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C3" style="position:absolute; top:90%; left:46%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C3" style="position:absolute; top:90%; left:45.2%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_3/10/0/1/5/lt')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C4" style="position:absolute; top:19%; left:7.5%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C4" style="position:absolute; top:18.5%; left:7%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_4/10/0/1/5/lt')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C5" style="position:absolute; top:72.5%; left:16%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C5" style="position:absolute; top:72.5%; left:15.5%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_5/10/0/1/5/lt')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C6" style="position:absolute; top:82.5%; left:46%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C6" style="position:absolute; top:82.5%; left:45.2%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_6/10/0/1/5/lt')}
           </div>
+          <div class="var-editable scada-badge" data-id="RL_VALV_ACS" style="position:absolute; top:13%; left:15.7%;">
+            ${getDisplayHtml(hasData, 'RL_VALV_ACS|assets/img/V3V_CERRADA_ABAJO.png|assets/img/V2V_ABIERTA.png|8|3|5')}
+          </div>
+          <div class="var-editable scada-badge" data-id="AO_V3V_REC" style="position:absolute; top:42%; left:61%;">
+            ${getSensorHtml(hasData, 'AO_V3V_REC/10/0/1/5/%')}
+          </div>
+          <div class="var-editable scada-badge" data-id="RL_RECOVERY_MODE" style="position:absolute; top:44%; left:62.5%; transform: rotate(180deg)">
+            ${getDisplayHtml(hasData, 'RL_RECOVERY_MODE|assets/img/V3V_CERRADA_ABAJO.png|assets/img/V3V_CERRADA_ABAJO.png|8|3|5')}
+          </div>
+          <div class="var-editable scada-badge" data-id="RL_VALV_BOILER" style="position:absolute; top:42.5%; left:15.2%;">
+            ${getDisplayHtml(hasData, 'RL_VALV_BOILER|assets/img/V3V_CERRADA_ABAJO.png|assets/img/V3V_DERECHA_CERRADA.png|8|3|5')}
+          </div>
+          <div class="var-editable scada-badge" data-id="RELE_ALARMA" style="position:absolute; top:92%; left:80%;">
+            ${getDisplayHtml(hasData, 'RELE_ALARMA|assets/img/alarma.png|assets/img/alarma-off.png|15|10|5')}
+          </div>
+
         </div>
       </div>
     </div>`;
@@ -676,16 +715,17 @@ function main_table(hasData) {
   let existingRoot = document.getElementById('Scada-App-Root');
 
   if (existingRoot) {
-    existingRoot.outerHTML = html; 
+    existingRoot.outerHTML = html;
   } else if (kiconexContainer) {
     kiconexContainer.innerHTML = html;
   } else {
     document.body.insertAdjacentHTML('beforeend', html);
   }
+
   habilitarArrastreFondo();
   aplicarPosicionesGuardadas();
   load(hasData);
-};
+}
 
 function load(hasData) {
   if (!hasData) {
@@ -700,7 +740,7 @@ function load(hasData) {
     url: 'js/intarcon.js',
     dataType: 'script',
     crossDomain: true,
-    timeout: 5000, 
+    timeout: 5000,
     success: function () {
       setTimeout(() => {
         let loader = document.getElementById('main-load');
@@ -714,4 +754,4 @@ function load(hasData) {
       main_table(false);
     }
   });
-};
+}
