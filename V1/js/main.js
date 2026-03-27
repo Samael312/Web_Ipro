@@ -577,73 +577,73 @@ function main_table(hasData) {
         <div id="Grid-Container-Zoom">
           <img id="scada-img-bg" src="layout01.png" alt="Mapa de la planta">
 
-          <div class="var-editable scada-badge" data-id="Pb_T_S1" style="position:absolute; top:6.2%; left:41%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S1" style="position:absolute; top:7.2%; left:41%;">
             ${getSensorHtml(hasData, 'Pb_T_S1/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S2" style="position:absolute; top:47%; left:40%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S2" style="position:absolute; top:48%; left:40%;">
             ${getSensorHtml(hasData, 'Pb_T_S2/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S3" style="position:absolute; top:35%; left:78%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S3" style="position:absolute; top:36%; left:78%;">
             ${getSensorHtml(hasData, 'Pb_T_S3/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S4" style="position:absolute; top:4%; left:41%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S4" style="position:absolute; top:5%; left:41%;">
             ${getSensorHtml(hasData, 'Pb_T_S4/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S5" style="position:absolute; top:35%; left:10%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S5" style="position:absolute; top:36%; left:10%;">
             ${getSensorHtml(hasData, 'Pb_T_S5/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S6" style="position:absolute; top:54.5%; left:27.5%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S6" style="position:absolute; top:55.5%; left:27.5%;">
             ${getSensorHtml(hasData, 'Pb_T_S6/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S7" style="position:absolute; top:11%; left:9%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S7" style="position:absolute; top:12%; left:9%;">
             ${getSensorHtml(hasData, 'Pb_T_S7/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S14" style="position:absolute; top:6.2%; left:71%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S14" style="position:absolute; top:7.2%; left:71%;">
             ${getSensorHtml(hasData, 'Pb_T_S14/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S15" style="position:absolute; top:8.9%; left:71%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S15" style="position:absolute; top:9.9%; left:71%;">
             ${getSensorHtml(hasData, 'Pb_T_S15/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S24" style="position:absolute; top:25%; left:92%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S24" style="position:absolute; top:26%; left:92%;">
             ${getSensorHtml(hasData, 'Pb_T_S24/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S24_2" style="position:absolute; top:61%; left:9.7%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S24_2" style="position:absolute; top:62%; left:9.7%;">
             ${getSensorHtml(hasData, 'Pb_T_S24/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S25" style="position:absolute; top:27%; left:92%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S25" style="position:absolute; top:28%; left:92%;">
             ${getSensorHtml(hasData, 'Pb_T_S25/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S26" style="position:absolute; top:59.2%; left:9.7%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S26" style="position:absolute; top:60.2%; left:9.7%;">
             ${getSensorHtml(hasData, 'Pb_T_S26/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_T_S27" style="position:absolute; top:7.5%; left:89.5%;">
+          <div class="var-editable scada-badge" data-id="Pb_T_S27" style="position:absolute; top:8.5%; left:89.5%;">
             ${getSensorHtml(hasData, 'Pb_T_S27/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_P_S16" style="position:absolute; top:55%; left:45.3%;">
+          <div class="var-editable scada-badge" data-id="Pb_P_S16" style="position:absolute; top:56%; left:45.3%;">
             ${getSensorHtml(hasData, 'Pb_P_S16/10/0/1/5/bar')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_P_S17" style="position:absolute; top:38%; left:46%;">
+          <div class="var-editable scada-badge" data-id="Pb_P_S17" style="position:absolute; top:39%; left:46%;">
             ${getSensorHtml(hasData, 'Pb_P_S17/10/0/1/5/bar')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_P_S21" style="position:absolute; top:53%; left:62.5%;">
+          <div class="var-editable scada-badge" data-id="Pb_P_S21" style="position:absolute; top:54%; left:62.5%;">
             ${getSensorHtml(hasData, 'Pb_P_S21/10/0/1/5/bar')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_P_S22" style="position:absolute; top:67%; left:87.5%;">
+          <div class="var-editable scada-badge" data-id="Pb_P_S22" style="position:absolute; top:68%; left:87.5%;">
             ${getSensorHtml(hasData, 'Pb_P_S22/10/0/1/5/bar')}
           </div>
-          <div class="var-editable scada-badge" data-id="Pb_P_S23" style="position:absolute; top:54.5%; left:74%;">
+          <div class="var-editable scada-badge" data-id="Pb_P_S23" style="position:absolute; top:55.5%; left:74%;">
             ${getSensorHtml(hasData, 'Pb_P_S23/10/0/1/5/bar')}
           </div>
-          <div class="var-editable scada-badge" data-id="PAR_CONSIGNA_FRIO" style="position:absolute; top:8.8%; left:41%;">
+          <div class="var-editable scada-badge" data-id="PAR_CONSIGNA_FRIO" style="position:absolute; top:9.8%; left:41%;">
             ${getSensorHtml(hasData, 'PAR_CONSIGNA_FRIO/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="PAR_CONSIGNA_FRIO_2" style="position:absolute; top:12%; left:71%;">
+          <div class="var-editable scada-badge" data-id="PAR_CONSIGNA_FRIO_2" style="position:absolute; top:13%; left:71%;">
             ${getSensorHtml(hasData, 'PAR_CONSIGNA_FRIO/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="PAR_CONSIGNA_CALOR" style="position:absolute; top:29%; left:92%;">
+          <div class="var-editable scada-badge" data-id="PAR_CONSIGNA_CALOR" style="position:absolute; top:30%; left:92%;">
             ${getSensorHtml(hasData, 'PAR_CONSIGNA_CALOR/10/0/1/5/ºC')}
           </div>
-          <div class="var-editable scada-badge" data-id="PAR_CONSIGNA_CALOR_2" style="position:absolute; top:63%; left:10%;">
+          <div class="var-editable scada-badge" data-id="PAR_CONSIGNA_CALOR_2" style="position:absolute; top:64%; left:10%;">
             ${getSensorHtml(hasData, 'PAR_CONSIGNA_CALOR/10/0/1/5/ºC')}
           </div>
           <div class="var-editable scada-badge" data-id="RL_BOMBAS_G1" style="position:absolute; top:40.5%; left:51%;">
@@ -661,49 +661,49 @@ function main_table(hasData) {
           <div class="var-editable scada-badge" data-id="RL_BOMBA_G6" style="position:absolute; top:23%; left:6.5%;">
             ${getDisplayHtml(hasData, 'RL_BOMBA_G6|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_ENABLE_INTAR_BIG" style="position:absolute; top:20%; left:62%;">
+          <div class="var-editable scada-badge" data-id="RL_ENABLE_INTAR_BIG" style="position:absolute; top:21%; left:62%;">
             ${getDisplayHtml(hasData, 'RL_ENABLE_INTAR_BIG|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_ENABLE_INTAR_SMALL" style="position:absolute; top:20%; left:34%;">
+          <div class="var-editable scada-badge" data-id="RL_ENABLE_INTAR_SMALL" style="position:absolute; top:21%; left:34%;">
             ${getDisplayHtml(hasData, 'RL_ENABLE_INTAR_SMALL|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_ENABLE_BDC_KEYTER" style="position:absolute; top:42%; left:90%;">
+          <div class="var-editable scada-badge" data-id="RL_ENABLE_BDC_KEYTER" style="position:absolute; top:43%; left:90%;">
             ${getDisplayHtml(hasData, 'RL_ENABLE_BDC_KEYTER|assets/img/stop.png|assets/img/play.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_ELECT_HEATER_REC" style="position:absolute; top:42%; left:71.5%;">
+          <div class="var-editable scada-badge" data-id="RL_ELECT_HEATER_REC" style="position:absolute; top:43%; left:71.5%;">
             ${getDisplayHtml(hasData, 'RL_ELECT_HEATER_REC|assets/img/resistencia_OFF.png|assets/img/resistencia_ON.png|10/8/5')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C1" style="position:absolute; top:86.5%; left:45.2%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C1" style="position:absolute; top:87.5%; left:45.2%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_1/10/0/1/5/lt')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C2" style="position:absolute; top:83%; left:4.5%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C2" style="position:absolute; top:84%; left:4.5%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_2/10/0/1/5/lt')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C3" style="position:absolute; top:90%; left:45.2%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C3" style="position:absolute; top:91%; left:45.2%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_3/10/0/1/5/lt')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C4" style="position:absolute; top:18.5%; left:7%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C4" style="position:absolute; top:19.5%; left:7%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_4/10/0/1/5/lt')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C5" style="position:absolute; top:72.5%; left:15.5%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C5" style="position:absolute; top:73.5%; left:15.5%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_5/10/0/1/5/lt')}
           </div>
-          <div class="var-editable scada-badge" data-id="ST_LITROS_C6" style="position:absolute; top:82.5%; left:45.2%;">
+          <div class="var-editable scada-badge" data-id="ST_LITROS_C6" style="position:absolute; top:83.5%; left:45.2%;">
             ${getCounterHtml(hasData, 'ST_CAUDAL_PULSOS_6/10/0/1/5/lt')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_VALV_ACS" style="position:absolute; top:13%; left:15.7%;">
+          <div class="var-editable scada-badge" data-id="RL_VALV_ACS" style="position:absolute; top:14%; left:15.7%;">
             ${getDisplayHtml(hasData, 'RL_VALV_ACS|assets/img/V3V_CERRADA_ABAJO.png|assets/img/V2V_ABIERTA.png|8|3|5')}
           </div>
-          <div class="var-editable scada-badge" data-id="AO_V3V_REC" style="position:absolute; top:42%; left:61%;">
+          <div class="var-editable scada-badge" data-id="AO_V3V_REC" style="position:absolute; top:43%; left:61%;">
             ${getSensorHtml(hasData, 'AO_V3V_REC/10/0/1/5/%')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_RECOVERY_MODE" style="position:absolute; top:44%; left:62.5%; transform: rotate(180deg)">
+          <div class="var-editable scada-badge" data-id="RL_RECOVERY_MODE" style="position:absolute; top:45%; left:62.5%; transform: rotate(180deg)">
             ${getDisplayHtml(hasData, 'RL_RECOVERY_MODE|assets/img/V3V_CERRADA_ABAJO.png|assets/img/V3V_CERRADA_ABAJO.png|8|3|5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RL_VALV_BOILER" style="position:absolute; top:42.5%; left:15.2%;">
+          <div class="var-editable scada-badge" data-id="RL_VALV_BOILER" style="position:absolute; top:43.5%; left:15.2%;">
             ${getDisplayHtml(hasData, 'RL_VALV_BOILER|assets/img/V3V_CERRADA_ABAJO.png|assets/img/V3V_DERECHA_CERRADA.png|8|3|5')}
           </div>
-          <div class="var-editable scada-badge" data-id="RELE_ALARMA" style="position:absolute; top:92%; left:80%;">
+          <div class="var-editable scada-badge" data-id="RELE_ALARMA" style="position:absolute; top:93%; left:80%;">
             ${getDisplayHtml(hasData, 'RELE_ALARMA|assets/img/alarma.png|assets/img/alarma-off.png|15|10|5')}
           </div>
 
