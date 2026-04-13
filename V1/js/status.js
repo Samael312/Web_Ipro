@@ -209,15 +209,13 @@ function build_main_table() {
       tr("Caudal frío",    dec('PB_Q_S28',          10,1) + " l/s") +
     "</table></td>" +
 
-    "<td style='width:33%;'><table class='table table-borderless'>" + th("Salidas Activas") +
-      tr("Bomba frío G1",  bool("RL_BOMBAS_G1",      "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
-      tr("Bomba frío G2",  bool("RL_BOMBAS_G2",      "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
-      tr("Bomba frío G3",  bool("RL_BOMBAS_G3",      "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
-      tr("Bomba calor G4", bool("RL_BOMBAS_G4",      "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
-      tr("Bomba calor G5", bool("RL_BOMBAS_G5",       "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
+    "<td style='width:33%;'><table class='table table-borderless'>" + th("Grupos de bombeo") +
+      tr("Grupo de bombeo G1",  bool("RL_BOMBAS_G1",      "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
+      tr("Grupo de bombeo G2",  bool("RL_BOMBAS_G2",      "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
+      tr("Grupo de bombeo G3",  bool("RL_BOMBAS_G3",      "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
+      tr("Grupo de bombeo G4", bool("RL_BOMBAS_G4",      "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
+      tr("Grupo de bombeo G5", bool("RL_BOMBAS_G5",       "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
       tr("Bomba ACS G6",   bool("RL_BOMBA_G6",       "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
-      tr("Caldera 1",      bool("RL_ENABLE_BOILER1", "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
-      tr("Caldera 2",      bool("RL_ENABLE_BOILER2", "<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
     "</table></td>" +
 
     "</tr></table></div></div>";
@@ -228,12 +226,15 @@ function build_main_table() {
 // ─────────────────────────────────────────────────────────────────
 function build_heat_html() {
   var c1 = th("Demanda") +
-    tr("Etapas demandadas calor",  dec('ST_DEMANDA_CALOR',1,0)) +
+    tr("Etapas demandadas calor",  dec('ST_DEMANDA_CALOR',1,0)+" / "+dec('ST_ETAPAS_CALOR',1,0)) +
     tr("Salida PID Demanda Calor", dec('ST_DEMANDA_CALOR_OUTPUT',1,0) + " %") +
-    tr("Etapas disponibles calor", dec('ST_ETAPAS_CALOR',1,0));
-  var c2 = th("Activación Calderas") +
-    tr("Orden activación caldera 1", bool('ST_ACTIVAR_CALDERA1',"<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
-    tr("Orden activación caldera 2", bool('ST_ACTIVAR_CALDERA2',"<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>"));
+    tr("Disponibilidad bomba de calor", dec('ST_DISPONIBLE_BDC',1,0) + " %");
+  var c2 = th("Activación Equipos") +
+    tr("Orden activación Bomba de Calor", bool('RL_ENABLE_BDC_KEYTER',"<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
+    tr("Orden activación caldera 1", bool('RL_ENABLE_BOILER1',"<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
+    tr("Orden activación caldera 2", bool('RL_BURNER_STAGE1',"<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
+    tr("Orden activación caldera 3", bool('RL_BURNER_STAGE2',"<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>")) +
+    tr("Válvula circuito caldera", bool('RL_VALVE_BOILER',"<span style='color:blue'>OFF</span>","<span style='color:red'>ON</span>"));
   var c3 = th("Mantenimiento") +
     tr("Mantenimiento Caldera", bool('ST_MANTENIMIENTO_CALDERA',"<span style='color:blue'>Apagado</span>","<span style='color:red'>Encendido</span>"));
   return section("CIRCUITO CALOR", "#ffe0cc", threeCol(c1, c2, c3));

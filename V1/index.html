@@ -9,6 +9,7 @@
   <link rel="icon" href="assets/logos/Logo-simple-azul.png" />
   <link href="css/boostrap.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/custom-scada.css">
   <script src="js/lib/bootstrap.bundle.min.js"></script>
   <script src="js/lib/jquery.min.js"></script>
   <script src="js/lib/jquery-ui.js"></script>
@@ -47,6 +48,7 @@
         </div>
       </div>
       <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+      <!--
         <li>
           <span class='nav-link intar-icon' style="display: none;">ALARMA//i style='color:red;
             font-size: 25;' class="fa fa-bell"/10
@@ -57,6 +59,7 @@
             font-size: 25;' class="fa fa-exclamation-triangle"/10
           </span>
         </li>
+      -->
         <li>&nbsp;&nbsp;&nbsp;</li>
         <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link"
           id="login_username"></li>
@@ -79,6 +82,7 @@
             <a style="color: white;" class="nav-link" href="index.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-home"></i></div> PRINCIPAL
             </a>
+            <!-- 
             <a style="color: white;" class="nav-link" href="status.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-tachometer"></i></div>
               ESTADO
@@ -93,13 +97,14 @@
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-toggle-off"></i></div>
               ENTRADAS/SALIDAS
             </a>
+          -->
 
-            <!-- GRÁFICAS — comentado temporalmente
+            
             <a style="color: white;" class="nav-link" href="graphs.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-area-chart"></i></div>
               GRAFICAS
             </a>
-            -->
+            
 
             <!-- PARÁMETROS — comentado temporalmente
             <a style="color: white;" class="nav-link" data-bs-toggle="collapse" data-bs-target="#collapseParameters"
@@ -149,7 +154,7 @@
     </div>
     <div id="layoutSidenav_content">
       <main>
-        <div class="container-fluid p-3">
+        <div class="container-fluid p-0">
           <div class="d-flex justify-content-center row">
             <div id="main-load" class="spinner-border" role="status" style="width: 6rem; height: 6rem;color: #1a82ba;">
               <span class="visually-hidden">Loading...</span>

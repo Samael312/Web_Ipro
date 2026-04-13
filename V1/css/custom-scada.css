@@ -1,0 +1,400 @@
+.var-editable.scada-badge {
+  position: absolute;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_ALTA_MEDIA_T2"] {
+  top: 876.953px;
+  left: 1340.92px;
+  width: 37.625px;
+  height: 36.9844px;
+  font-size: 18.5004px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_ALTA_MEDIA_T5"] {
+  top: 918.984px;
+  left: 1340.16px;
+  width: 37.625px;
+  height: 36.9844px;
+  font-size: 18.5004px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_BAJA_MEDIA_T2"] {
+  top: 876.953px;
+  left: 1341.11px;
+  width: 37.625px;
+  height: 36.9844px;
+  font-size: 18.5004px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_BAJA_MEDIA_T5"] {
+  top: 920.906px;
+  left: 1341.11px;
+  width: 37.625px;
+  height: 36.9844px;
+  font-size: 18.5004px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_BDC_KEYTER"] {
+  top: 387.062px;
+  left: 1805.94px;
+  width: 58px;
+  height: 50px;
+  font-size: 11px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_BOMBA1_G1"] {
+  top: 427.984px;
+  left: 1112.25px;
+  width: 48.5625px;
+  height: 38px;
+  font-size: 18.9972px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_BOMBA1_G3"] {
+  top: 312.672px;
+  left: 728.062px;
+  width: 51.0625px;
+  height: 33.9688px;
+  font-size: 16.9992px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_BOMBA1_G4"] {
+  top: 476.266px;
+  left: 1649.08px;
+  width: 48.5625px;
+  height: 38px;
+  font-size: 18.9972px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_BOMBA1_G5"] {
+  top: 628.688px;
+  left: 1718.2px;
+  width: 48.5625px;
+  height: 38px;
+  font-size: 18.9972px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_BOMBA2_G1"] {
+  top: 469.219px;
+  left: 1113.2px;
+  width: 48.5625px;
+  height: 38px;
+  font-size: 18.9972px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_BOMBA2_G4"] {
+  top: 476.266px;
+  left: 1692.47px;
+  width: 48.5625px;
+  height: 38px;
+  font-size: 18.9972px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_BOMBA2_G5"] {
+  top: 671.016px;
+  left: 1717.23px;
+  width: 48.5625px;
+  height: 38px;
+  font-size: 18.9972px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_INTARCON_BIG"] {
+  top: 154.016px;
+  left: 1220.92px;
+  width: 58px;
+  height: 50px;
+  font-size: 11px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ALARM_INTARCON_SMALL"] {
+  top: 152px;
+  left: 676.031px;
+  width: 58px;
+  height: 50px;
+  font-size: 11px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="AO_V3V_REC"] {
+  top: 468.906px;
+  left: 1348.98px;
+  width: 91.9531px;
+  height: 54.0156px;
+  font-size: 27px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ONOFF_GEN"] {
+  top: 787.031px;
+  left: 1242.42px;
+  width: 112.5px;
+  height: 39.6875px;
+  font-size: 19.8396px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="PB_P_S17"] {
+  top: 332.938px;
+  left: 1009.14px;
+  width: 148.797px;
+  height: 57.9375px;
+  font-size: 28.9656px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="PB_P_S21"] {
+  top: 583.016px;
+  left: 1216.89px;
+  width: 148.797px;
+  height: 57.9375px;
+  font-size: 28.9656px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="PB_P_S23"] {
+  top: 560.938px;
+  left: 1558.84px;
+  width: 148.797px;
+  height: 57.9375px;
+  font-size: 28.9656px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="PB_T_S27"] {
+  top: 47.0625px;
+  left: 1830.91px;
+  width: 81.9688px;
+  height: 30.3281px;
+  font-size: 15.1956px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="Pb_T_S1"] {
+  top: 387.969px;
+  left: 689.078px;
+  width: 148.797px;
+  height: 57.9375px;
+  font-size: 28.9656px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="Pb_T_S2"] {
+  top: 488.969px;
+  left: 690.047px;
+  width: 148.797px;
+  height: 57.9375px;
+  font-size: 28.9656px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="Pb_T_S3"] {
+  top: 292.719px;
+  left: 1610.3px;
+  width: 148.797px;
+  height: 57.9375px;
+  font-size: 28.9656px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="Pb_T_S5"] {
+  top: 348.047px;
+  left: 120px;
+  width: 148.797px;
+  height: 57.9375px;
+  font-size: 28.9656px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="Pb_T_S6"] {
+  top: 596.938px;
+  left: 469.047px;
+  width: 148.797px;
+  height: 57.9375px;
+  font-size: 28.9656px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="Pb_T_S7"] {
+  top: 28.5156px;
+  left: 276.094px;
+  width: 148.797px;
+  height: 57.9375px;
+  font-size: 28.9656px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RELE_ALARMA"] {
+  top: 829.281px;
+  left: 1238.39px;
+  width: 120px;
+  height: 42.9375px;
+  font-size: 21.4812px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_BOMBAS_G1"] {
+  top: 454.406px;
+  left: 1104.56px;
+  width: 138.594px;
+  height: 32.9375px;
+  font-size: 16.5024px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_BOMBAS_G3"] {
+  top: 312.969px;
+  left: 703.859px;
+  width: 161.547px;
+  height: 38px;
+  font-size: 16px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_BOMBAS_G4"] {
+  top: 506.312px;
+  left: 1625.84px;
+  width: 138.594px;
+  height: 32.9375px;
+  font-size: 16.5024px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_BOMBAS_G5"] {
+  top: 654.891px;
+  left: 1710.52px;
+  width: 138.594px;
+  height: 32.9375px;
+  font-size: 16.5024px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_BURNER_STAGE1"] {
+  top: 573.547px;
+  left: 108.281px;
+  width: 50.2969px;
+  height: 52px;
+  font-size: 25.9848px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_BURNER_STAGE2"] {
+  top: 573.547px;
+  left: 162.234px;
+  width: 50.2969px;
+  height: 52px;
+  font-size: 25.9848px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_ELECT_HEATER_REC"] {
+  top: 473.656px;
+  left: 1468.98px;
+  width: 92.1406px;
+  height: 67.125px;
+  font-size: 33.5448px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_ENABLE_BDC_KEYTER"] {
+  top: 463.172px;
+  left: 1787.89px;
+  width: 77.9375px;
+  height: 50.5px;
+  font-size: 25.2396px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_ENABLE_BOILER1"] {
+  top: 573.547px;
+  left: 54.5156px;
+  width: 50.2969px;
+  height: 52px;
+  font-size: 25.9848px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_ENABLE_INTAR_BIG"] {
+  top: 152.094px;
+  left: 1301.38px;
+  width: 75.8281px;
+  height: 57.4531px;
+  font-size: 28.7388px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_ENABLE_INTAR_SMALL"] {
+  top: 150.078px;
+  left: 758.016px;
+  width: 75.8125px;
+  height: 57.4375px;
+  font-size: 28.7388px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_RECOVERY_MODE"] {
+  top: 487.766px;
+  left: 1310.39px;
+  width: 74.2969px;
+  height: 82.9375px;
+  font-size: 41.472px;
+  transform: matrix(-1, 0, 0, -1, 0, 0);
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_VALV_ACS"] {
+  top: 78.7188px;
+  left: 250.938px;
+  width: 74.2969px;
+  height: 82.9531px;
+  font-size: 41.472px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="RL_VALV_BOILER"] {
+  top: 459.234px;
+  left: 282.422px;
+  width: 74.2969px;
+  height: 82.9375px;
+  font-size: 41.472px;
+  transform: matrix(0, 1, -1, 0, 0, 0);
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ST_LITROS_SUELTOS_C1"] {
+  top: 827.969px;
+  left: 550.078px;
+  width: 148.969px;
+  height: 58.4375px;
+  font-size: 29.2464px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ST_LITROS_SUELTOS_C2"] {
+  top: 757px;
+  left: 221.938px;
+  width: 148.969px;
+  height: 58.4375px;
+  font-size: 29.2464px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ST_LITROS_SUELTOS_C3"] {
+  top: 911.016px;
+  left: 548.922px;
+  width: 148.969px;
+  height: 58.4375px;
+  font-size: 29.2464px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ST_LITROS_SUELTOS_C4"] {
+  top: 126px;
+  left: 5.9375px;
+  width: 148.969px;
+  height: 58.4375px;
+  font-size: 29.2464px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ST_LITROS_SUELTOS_C5"] {
+  top: 648.031px;
+  left: 38.9688px;
+  width: 148.969px;
+  height: 58.4375px;
+  font-size: 29.2464px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ST_LITROS_SUELTOS_C6"] {
+  top: 744px;
+  left: 549.109px;
+  width: 148.969px;
+  height: 58.4375px;
+  font-size: 29.2464px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ST_MEDIA_IMPULSION_CALOR"] {
+  top: 873.016px;
+  left: 1236.09px;
+  width: 123.047px;
+  height: 46.9688px;
+  font-size: 23.4684px;
+}
+
+#Grid-Container-Zoom .var-editable[data-id="ST_MEDIA_IMPULSION_FRIO"] {
+  top: 915.969px;
+  left: 1237.05px;
+  width: 123.047px;
+  height: 46.9688px;
+  font-size: 23.4684px;
+}
+

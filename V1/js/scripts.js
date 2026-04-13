@@ -12,6 +12,15 @@ var error = document.getElementById('login-error')
 window.addEventListener('DOMContentLoaded', event => {
   // Toggle the side navigation
   const sidebarToggle = document.body.querySelector('#sidebarToggle');
+
+  // Estado por defecto cerrado
+  const isToggled = localStorage.getItem('sb|sidebar-toggle');
+
+  if (isToggled === null || isToggled === 'true') {
+    document.body.classList.add('sb-sidenav-toggled');
+  }
+
+  // Evento de clic para mosrar/ocultar
   if (sidebarToggle) {
     sidebarToggle.addEventListener('click', event => {
       event.preventDefault();
@@ -38,6 +47,30 @@ window.onload = function () {
 function magcheck_login(a, b) { return dixe_only_login(a, b); }
 function magcheck_logout() { dixe_forget(); }
 function magcheck_user() { return readCookie("magcheck_user"); }
+
+function autoLoginReadOnly(reloadOnSuccess = true) {
+  const autoUser = 'User';
+  const autoPass = 'User01';
+
+  // Si ya hay sesión, no hacer nada
+  if (magcheck_user()) {
+    console.log('User already logged in, skipping auto-login.');
+    return true;
+  }
+
+  const ok = magcheck_login(autoUser, autoPass);
+
+  console.log(`Auto-login attempt for read-only user: ${ok ? 'success' : 'failure'}`);
+
+  if (ok === true) {
+    if (reloadOnSuccess) {
+      window.location.reload();
+    }
+    return true;
+  }
+
+  return false;
+}
 
 $('#loginForm').submit(function () {
   login_Validation();

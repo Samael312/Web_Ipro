@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>kiControl: NOMBRE_CONTROL</title>
+  <title>intarCHILLER: Chiller engineering solution. By Intarcon</title>
   <link rel="icon" href="assets/logos/Logo-simple-azul.png" />
   <link href="css/boostrap.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
@@ -17,10 +17,6 @@
   <script src="js/lib/moment.min.js"></script>
   <script src="js/lib/j_utility.js"></script>
   <script src="js/lib/fontawesome.js"></script>
-  <!-- Graficas -->
-  <script src="js/lib/apexcharts.js"></script>
-  <script src="js/lib/apexcharts.min.js"></script>
-  
 </head>
 
 <body class="sb-nav-fixed">
@@ -38,14 +34,14 @@
     </button>
     <!-- Navbar-->
     <div class="ms-auto">
-      <div id="login-modal" class="modal" style="display: none;">
+      <div id="login-modal" class="modal">
         <div class="modal-content">
           <div class="container text-center">
             <h2 class="text-center">Log In</h2>
             <hr />
-            <form id="loginForm" autocomplete="off">
-              <input class="input-login" type="text" placeholder="Username" id="login-username" autocomplete="off">
-              <input class="input-login" type="password" placeholder="Password" id="login-password" autocomplete="new-password">
+            <form id="loginForm">
+              <input class="input-login" type="text" placeholder="Username" id="login-username">
+              <input class="input-login" type="password" placeholder="Password" id="login-password">
               <span style="display: none;" id="login-error" class="text-danger">
                 * Username or password incorrect</span>
               <div id="login_form" class="login_form text-center mt-2" style="display: block;">
@@ -56,7 +52,26 @@
         </div>
       </div>
       <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li style="color: white;font-weight: bold; font-size: large;" class="nav-link">GRÁFICAS</li>
+        <li>
+          <span class='nav-link intar-icon' style="display: none;">ALARMA//i style='color:red;
+            font-size: 25;' class="fa fa-bell"/10
+          </span>
+        </li>
+        <li>
+          <span class='nav-link intar-icon' style="display: none;">WARNING//i style='color:yellow;
+            font-size: 25;' class="fa fa-exclamation-triangle"/10
+          </span>
+        </li>
+        <li>&nbsp;&nbsp;&nbsp;</li>
+        <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link"
+          id="login_username"></li>
+        <li style="color: white;font-weight: bold; font-size: large; display: none;" class="nav-link" id="login_logout"
+          role="button" onclick="logOut()">
+          <i class="fa fa-power-off" aria-hidden="true"></i>
+        </li>
+        <li style="color: white;font-weight: bold; font-size: large;" class="nav-link" role="button"
+          onclick="document.getElementById('login-modal').style.display='block'" id="login_button">LOGIN
+        </li>
       </ul>
     </div>
   </nav>
@@ -66,34 +81,42 @@
         <div class="sb-sidenav-menu">
           <div class="nav">
             <a style="color: white;" class="nav-link" href="index.html">
-              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-home"></i></div> PRINCIPAL
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-home"></i></div> MAIN
             </a>
             <!--
             <a style="color: white;" class="nav-link" href="status.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-tachometer"></i></div>
-              ESTADO
+              STATUS
             </a>
             <a style="color: white;" class="nav-link" href="alarms.html">
               <div class="sb-nav-link-icon">
                 <i id="alarm" style='font-size: 20;' class="fa fa-bell"></i>
                 <span class='intar-icon' style="display: none;">ALARMA///10 </span>
-              </div> ALARMAS
+              </div> ALARM
             </a>
             <a style="color: white;" class="nav-link" href="input-output.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-toggle-off"></i></div>
-              ENTRADAS/SALIDAS
+              INPUT/OUTPUT
+            </a>
+            <a style="color: white;" class="nav-link" href="layout.html">
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-desktop"></i></div>
+              LAYOUT
+            </a>
+            <a style="color: white;" class="nav-link" href="eev.html">
+              <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-code-fork"></i></div>
+              EEV
             </a>
           -->
             
             <a style="color: white;" class="nav-link" href="graphs.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-area-chart"></i></div>
-              GRAFICAS
+              GRAPHS
             </a>
             <!--
             <a style="color: white;" class="nav-link" data-bs-toggle="collapse" data-bs-target="#collapseParameters"
               aria-expanded="false" aria-controls="collapseParameters">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-sliders"></i></div>
-              PARAMETROS
+              PARAMETERS
               <div class="sb-sidenav-collapse-arrow">
                 <i style="color: white;" class="fas fa-angle-down"></i>
               </div>
@@ -103,30 +126,29 @@
               <nav class="sb-sidenav-menu-nested nav">
                 <a style="color: white;" class="nav-link" href="parameters.html">
                   <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i>
-                  </div> CONFIGURACION PARAMETROS
+                  </div> PARAMETERS CONF
                 </a>
                 <a style="color: white;" class="nav-link" href="parameters-io.html">
                   <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-bars"></i>
-                  </div> CONFIGURACION E/S
+                  </div> I/O's CONF
                 </a>
               </nav>
             </div>
             <a style="color: white;" class="nav-link" href="commands.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-terminal"></i></div>
-              COMANDOS
-            </a>
-          -->
+              COMMANDS
+            </a>-->
             <hr>
             <a style="color: white;" class="nav-link" href="/panel/index.html">
               <div class="sb-nav-link-icon"><i style='font-size: 20;' class="fa fa-columns"></i></div>
-              PANEL DE CONTROL
+              CONTROL PANEL
             </a>
           </div>
         </div>
         <div class="sb-sidenav-footer">
           <div class="text-center">
-            <a href="https://www.kiconex.com" target="_blank"
-              style="text-decoration: none;color:white; font-weight: bold;">KICONEX - 2025</a>
+            <a href="https://www.intarcon.com" target="_blank"
+              style="text-decoration: none;color:white; font-weight: bold;">INTARCON - 2024</a>
           </div>
         </div>
       </nav>
@@ -134,28 +156,18 @@
     <div id="layoutSidenav_content">
       <main>
         <div class="container-fluid p-3">
-          <div class="d-flex justify-content-center row">
-            <div id="main-load" class="spinner-border" role="status" style="width: 6rem; height: 6rem;color: #1a82ba;">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
-          <div class="card mb-3 p-2">
-            <div><strong>Estado circuitos</strong></div>
-            <div id="controls-st" class="d-flex flex-wrap"></div>
-          </div>
-          <div id="graph-st-calor"></div>
-          <div id="graph-st-frio"></div>
+          <h3 class="text-center">
+            <strong>Layout not defined</strong>
+          </h3>
         </div>
       </main>
     </div>
   </div>
   <!-- Scripts de Librerias -->
   <script src="js/lib/dixell.js"></script>
-  <script src="js/lib/plotly-2.12.1.min.js"></script>
   <!-- Scripts de Intarcon -->
   <script src="js/scripts.js"></script>
   <script src="js/intarcon.js"></script>
-  <script src="js/graphs.js"></script>
 </body>
 
 </html>
